@@ -4,6 +4,10 @@ import { Home } from "./frontend/pages/Home";
 import { Products } from "./frontend/pages/Products";
 import { Cart } from "./frontend/pages/Cart";
 import { Whishlist } from "./frontend/pages/Wishlist";
+import { Root } from "./frontend/pages/Root";
+import { Login } from "./frontend/pages/login/Login";
+import { RequiresAuth } from "./frontend/authentication/requiresAuth";
+import Mockman from "mockman-js";
 
 
 function App() {
@@ -11,10 +15,20 @@ function App() {
     <div className="App">
       
      <Routes>
+      <Route path="/" element={<Root/>}>
       <Route path="/" element={<Home/>}/>
-      <Route path="/cart" element={<Cart/>}/>
       <Route path="/products" element={<Products/>}/>
-      <Route path="/wishlist" element={<Whishlist/>}/>
+      <Route path="/mockman" element={<Mockman/>}/>
+      <Route path="/wishlist" element={
+      <RequiresAuth>
+        <Whishlist/>
+        </RequiresAuth>}/>
+      <Route path="/cart" element={
+      <RequiresAuth>
+      <Cart/>
+      </RequiresAuth>}/>
+      <Route path="/login" element={<Login/>}/>
+      </Route>
      </Routes>
     </div>
   );

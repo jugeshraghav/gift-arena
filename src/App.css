@@ -1,5 +1,7 @@
 .App {
   text-align: center;
-  font-family: 'Righteous', cursive;
+  /* font-family: "Righteous", cursive; */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
-

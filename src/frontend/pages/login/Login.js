@@ -1,16 +1,12 @@
-import { useContext, useState } from "react"
-// import { loginHandler } from "../../../backend/controllers/AuthController"
+import { useContext} from "react"
 import { AuthContext } from "../../contexts/authenticationContext";
-import Image from "../../assets/transparent-logo.png"
+import Image from "../../assets/transparent-bg-logo.png"
 import "./login.css";
-import { LoginContext } from "../../contexts/LoginContext";
+
  
 
 export const Login=()=>{
-    const {loginHandler}=useContext(AuthContext);
-    // console.log(loginHandler)
-
-    const {userLoginEmail,setUserLoginEmail,userLoginPwd,setUserLoginPwd}=useContext(LoginContext);
+    const {loginHandler,userLoginEmail,setUserLoginEmail,userLoginPwd,setUserLoginPwd}=useContext(AuthContext);
 
     return (
         <>

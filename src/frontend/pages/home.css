@@ -1,0 +1,76 @@
+/* import {hero_img} from "../assets/links"; */
+.home {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.hero {
+  position: relative;
+  height: 500px;
+}
+
+.hero-image-container {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-content {
+  color: green;
+  font-size: 25px;
+  position: absolute;
+  width: 500px;
+  top: 100px;
+  left: 20px;
+}
+.hero-content button {
+  background-color: rgba(29, 54, 111, 1);
+  color: lightgreen;
+  padding: 10px 30px;
+  border: none;
+  font-weight: bold;
+}
+
+.home-categories {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px;
+}
+.category_card {
+  background-color: rgba(29, 54, 111, 0.5);
+  padding: 10px;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+.category_card img {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+
+.cakes-categories {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 400px;
+  margin: 40px 0;
+  background-color: lightgrey;
+}
+
+.cake-card {
+  width: max-content;
+  background-color: white;
+  width: 20%;
+  margin: 5% 2% 2% 2%;
+}
+.cake-card img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}

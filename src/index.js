@@ -5,9 +5,9 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider ,AuthContext} from "./frontend/contexts/authenticationContext";
-import { LoginProvider,LoginContext } from "./frontend/contexts/LoginContext";
+import { DataProvider ,DataContext} from "./frontend/contexts/dataContext";
 
-export {AuthContext,LoginContext}
+export {AuthContext,DataContext}
 
 // Call make Server
 makeServer();
@@ -15,11 +15,11 @@ makeServer();
 ReactDOM.render(
   
   <BrowserRouter>
-  <LoginProvider>
+  <DataProvider>
   <AuthProvider>
       <App />
       </AuthProvider>
-      </LoginProvider>
+      </DataProvider>
   </BrowserRouter>
 
 

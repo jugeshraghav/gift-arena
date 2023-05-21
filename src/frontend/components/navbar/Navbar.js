@@ -3,6 +3,8 @@ import Logo from "../../assets/transparent-bg-logo.png";
 // import LogoBlack from "../../assets/black-log.png"
 
 import "./navbar.css";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/authenticationContext";
 export const Navbar = () => {
   const getStyle = ({ isActive }) => {
     return {
@@ -10,6 +12,9 @@ export const Navbar = () => {
       textDecoration: "none",
     };
   };
+
+  const { loginHandler } = useContext(AuthContext);
+  const encodedUserLoginToken = localStorage.getItem("encodedUserLoginToken");
   return (
     <>
       <div class="nav-header">

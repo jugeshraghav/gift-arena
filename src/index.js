@@ -4,25 +4,31 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider ,AuthContext} from "./frontend/contexts/authenticationContext";
-import { DataProvider ,DataContext} from "./frontend/contexts/dataContext";
+import {
+  AuthProvider,
+  AuthContext,
+} from "./frontend/contexts/authenticationContext";
+import { DataProvider, DataContext } from "./frontend/contexts/dataContext";
+import {
+  FilterContext,
+  FilterProvider,
+} from "./frontend/contexts/filterContext";
 
-export {AuthContext,DataContext}
+export { AuthContext, DataContext, FilterContext };
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
-  
   <BrowserRouter>
-  <DataProvider>
-  <AuthProvider>
-      <App />
-      </AuthProvider>
-      </DataProvider>
-  </BrowserRouter>
+    <DataProvider>
+      <FilterProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </FilterProvider>
+    </DataProvider>
+  </BrowserRouter>,
 
-
- ,
   document.getElementById("root")
 );

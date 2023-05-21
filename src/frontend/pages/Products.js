@@ -2,9 +2,14 @@ import { useContext, useEffect } from "react";
 import { DataContext } from "../contexts/dataContext";
 import "./products.css";
 import { Filter } from "../components/filter/Filter";
+import { getFilteredProducts } from "../utils/filterFunctions";
+import { FilterContext } from "../contexts/filterContext";
+import { ProductCard } from "../components/productCard/ProductCard";
 export const Products = () => {
   const { allProducts } = useContext(DataContext);
-  console.log(allProducts);
+  const { appliedFilters } = useContext(FilterContext);
+  // console.log(allProducts);
+  const filteredProducts = getFilteredProducts(allProducts, appliedFilters);
 
   return (
     <>
@@ -13,19 +18,9 @@ export const Products = () => {
           <Filter />
         </div>
         <div className="products-list">
-          {allProducts.map(
-            ({ name, price, imageUrl, altText, rating, bestseller }) => (
-              <div className="product-card">
-                <img src={imageUrl} alt={altText} />
-                <div className="product-card-content">
-                  <p>{name}</p>
-                  <p>{price}</p>
-                </div>
-                <p className="rating-strip">{rating}⭐</p>
-                <p className="bestseller-strip">{bestseller && "Bestseller"}</p>
-              </div>
-            )
-          )}
+          {filteredProducts.map((product) => (
+            <ProductCard cardDetails={product} from="products" />
+          ))}
         </div>
       </div>
     </>

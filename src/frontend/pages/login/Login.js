@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../contexts/authenticationContext";
 import Image from "../../assets/transparent-bg-logo.png";
 import "./login.css";
+import { NavLink } from "react-router-dom";
 
 export const Login = () => {
   const {
@@ -16,15 +17,17 @@ export const Login = () => {
 
   return (
     <>
-      <div class="login-main">
-        <div class="login-left">
+      <div className="login-main">
+        <div className="login-left">
           <img src={Image} alt="gift-arena" width="150px" height="50px" />
           <p>One Stop solution for every kind of Gifts</p>
           <hr></hr>
           <p>New User? Sign Up to Continue </p>
-          <button>SignUp</button>
+          <NavLink to="/signup">
+            <button onClick>SignUp</button>
+          </NavLink>
         </div>
-        <div class="login-right">
+        <div className="login-right">
           <h1>Login</h1>
           <input
             type="email"
@@ -38,9 +41,7 @@ export const Login = () => {
             placeholder="Enter your password"
             onChange={(e) => setUserLoginPwd(e.target.value)}
           ></input>
-          <button onClick={() => loginHandler()}>
-            {encodedUserLoginToken ? "Logout" : "Login"}
-          </button>
+          <button onClick={() => loginHandler()}>Login</button>
         </div>
       </div>
     </>

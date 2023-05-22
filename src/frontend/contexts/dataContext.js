@@ -9,7 +9,7 @@ export const DataProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(dataReducer, initial_state);
   const { allProducts, categories, cart, wishlist } = state;
-  console.log("from data context", state);
+  // console.log("from data context", state);
 
   const cakes = state?.allProducts?.filter(
     ({ category }) => category === "Cake"
@@ -25,7 +25,6 @@ export const DataProvider = ({ children }) => {
     try {
       const response = await fetch("/api/products");
       const products = await response.json();
-      //   setAllProducts(products?.products);
       dispatch({ type: "get_all_products", payLoad: products?.products });
     } catch (e) {
       console.log(e);
@@ -35,7 +34,6 @@ export const DataProvider = ({ children }) => {
     try {
       const response = await fetch("/api/categories");
       const categories = await response.json();
-      //   setCategories(categories?.categories);
       dispatch({ type: "get_categories", payLoad: categories?.categories });
     } catch (e) {
       console.log(e);

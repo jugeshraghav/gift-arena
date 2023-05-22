@@ -6,7 +6,13 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [userLoginEmail, setUserLoginEmail] = useState("");
   const [userLoginPwd, setUserLoginPwd] = useState("");
-  // const [isLoggedIn,setIsLoggedIn]=useState(false);
+
+  const [signUpDetails, setSignUpDetails] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -21,15 +27,20 @@ export const AuthProvider = ({ children }) => {
         method: "POST",
         body: JSON.stringify(creds),
       });
-      const { encodedToken } = await response.json();
-      console.log(encodedToken);
+      // console.log(await response.json());
+      const { encodedToken, foundUser } = await response.json();
+      console.log(foundUser);
       localStorage.setItem("encodedUserLoginToken", encodedToken);
+      localStorage.setItem("userDetailsAfterLogin", JSON.stringify(foundUser));
     } catch (e) {
       console.log(e);
     }
   };
 
   const encodedUserLoginToken = localStorage.getItem("encodedUserLoginToken");
+  const userDetailsAfterLogin = localStorage.getItem("userDetailsAfterLogin");
+  console.log(userDetailsAfterLogin);
+
   const loginHandler = async () => {
     if (!encodedUserLoginToken) {
       await getUSerLoginToken();
@@ -40,18 +51,47 @@ export const AuthProvider = ({ children }) => {
           navigate(location?.state?.from);
         }
       }
-    } else {
-      localStorage.removeItem("encodedUserLoginToken");
     }
   };
+
+  const logoutHandler = () => {
+    localStorage.removeItem("encodedUserLoginToken");
+    navigate("/login");
+  };
+
+  const getUserSignUpToken = async () => {
+    try {
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        body: JSON.stringify(signUpDetails),
+      });
+      // const { encodedToken } = await response.json();
+      // console.log(encodedToken);
+      console.log(await response.json());
+      // localStorage.setItem("encodedUserSignUpToken", encodedToken);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const encodedUserSignUpToken = localStorage.getItem("encodedUserSignUpToken");
+  const signUpHandler = async () => {
+    await getUserSignUpToken();
+  };
+
   return (
     <AuthContext.Provider
       value={{
         loginHandler,
+        logoutHandler,
         userLoginEmail,
         setUserLoginEmail,
         userLoginPwd,
         setUserLoginPwd,
+        encodedUserLoginToken,
+        userDetailsAfterLogin,
+        signUpDetails,
+        signUpHandler,
+        setSignUpDetails,
       }}
     >
       {children}

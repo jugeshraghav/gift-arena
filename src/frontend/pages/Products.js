@@ -14,7 +14,7 @@ export const Products = () => {
   return (
     <>
       <div className="products-main">
-        <div class="product-filters">
+        <div className="product-filters">
           <Filter />
         </div>
         <div className="products-list">

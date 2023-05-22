@@ -8,28 +8,36 @@ import { Root } from "./frontend/pages/Root";
 import { Login } from "./frontend/pages/login/Login";
 import { RequiresAuth } from "./frontend/authentication/requiresAuth";
 import Mockman from "mockman-js";
-
+import { SignUp } from "./frontend/pages/SignUp";
 
 function App() {
   return (
     <div className="App">
-      
-     <Routes>
-      <Route path="/" element={<Root/>}>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/products" element={<Products/>}/>
-      <Route path="/mockman" element={<Mockman/>}/>
-      <Route path="/wishlist" element={
-      <RequiresAuth>
-        <Whishlist/>
-        </RequiresAuth>}/>
-      <Route path="/cart" element={
-      <RequiresAuth>
-      <Cart/>
-      </RequiresAuth>}/>
-      <Route path="/login" element={<Login/>}/>
-      </Route>
-     </Routes>
+      <Routes>
+        <Route path="/" element={<Root />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/mockman" element={<Mockman />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/wishlist"
+            element={
+              <RequiresAuth>
+                <Whishlist />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <RequiresAuth>
+                <Cart />
+              </RequiresAuth>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

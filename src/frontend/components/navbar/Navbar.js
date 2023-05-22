@@ -17,20 +17,20 @@ export const Navbar = () => {
   const encodedUserLoginToken = localStorage.getItem("encodedUserLoginToken");
   return (
     <>
-      <div class="nav-header">
-        <div class="nav-left">
-          <div class="nav-logo">
+      <div className="nav-header">
+        <div className="nav-left">
+          <div className="nav-logo">
             <img src={Logo} alt="gift arena" height="50px"></img>
           </div>
-          <div class="nav-search">
+          <div className="nav-search">
             <input
               type="text"
               placeholder="search flowers, cakes, gifts etc..."
             ></input>
           </div>
         </div>
-        <div class="nav-right">
-          <div class="nav-items">
+        <div className="nav-right">
+          <div className="nav-items">
             <NavLink to="/" style={getStyle}>
               Home
             </NavLink>

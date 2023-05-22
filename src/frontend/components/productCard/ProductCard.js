@@ -5,7 +5,6 @@ import { ProductCardButton } from "../productCardButton/ProductCardButton";
 export const ProductCard = (props) => {
   const { _id, name, price, imageUrl, altText, rating, bestseller } =
     props.cardDetails;
-  console.log(_id);
 
   return (
     <>
@@ -17,7 +16,7 @@ export const ProductCard = (props) => {
         </div>
         <p className="rating-strip">{rating}⭐</p>
         <p className="bestseller-strip">{bestseller && "Bestseller"}</p>
-        <ProductCardButton cardId={_id} from={props.from} />
+        <ProductCardButton product={props.cardDetails} from={props.from} />
       </div>
     </>
   );

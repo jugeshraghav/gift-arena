@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { DataContext } from "../contexts/dataContext";
-import "./products.css";
+import "../../App.css";
 import { Filter } from "../components/filter/Filter";
 import { getFilteredProducts } from "../utils/filterFunctions";
 import { FilterContext } from "../contexts/filterContext";

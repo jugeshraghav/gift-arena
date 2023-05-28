@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { DataContext } from "../../contexts/dataContext";
-import { addToCart } from "../../services/cartServices";
+
 import { AuthContext } from "../../contexts/authenticationContext";
 import { useNavigate } from "react-router";
 import { isInCart } from "../../utils/productFunctions";

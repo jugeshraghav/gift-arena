@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { DataContext } from "../../contexts/dataContext";
-import "./productCard.css";
+import "../../../App.css";
 import { ProductCardButton } from "../productCardButton/ProductCardButton";
 export const ProductCard = (props) => {
   const { _id, name, price, imageUrl, altText, rating, bestseller } =

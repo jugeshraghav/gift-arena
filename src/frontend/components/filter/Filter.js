@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import "./filter.css";
+import "../../../App.css";
 import { FilterContext } from "../../contexts/filterContext";
 
 export const Filter = () => {

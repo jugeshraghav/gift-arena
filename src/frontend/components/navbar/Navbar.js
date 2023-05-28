@@ -1,9 +1,16 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/transparent-bg-logo.png";
 // import LogoBlack from "../../assets/black-log.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faMagnifyingGlass,
+  faBars,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
-import "./navbar.css";
-import { useContext } from "react";
+import "../../../App.css";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authenticationContext";
 export const Navbar = () => {
   const getStyle = ({ isActive }) => {
@@ -14,26 +21,34 @@ export const Navbar = () => {
   };
 
   const { loginHandler } = useContext(AuthContext);
-  const encodedUserLoginToken = localStorage.getItem("encodedUserLoginToken");
+  const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+
   return (
     <>
-      <div className="nav-header">
+      <div className="nav-main">
         <div className="nav-left">
           <div className="nav-logo">
-            <img src={Logo} alt="gift arena" height="50px"></img>
+            <NavLink to="/">
+              <img src={Logo} alt="gift arena" height="50px"></img>
+            </NavLink>
           </div>
           <div className="nav-search">
             <input
               type="text"
               placeholder="search flowers, cakes, gifts etc..."
             ></input>
+            <button>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
           </div>
         </div>
+
         <div className="nav-right">
-          <div className="nav-items">
-            <NavLink to="/" style={getStyle}>
-              Home
-            </NavLink>
+          <div
+            className={
+              showHamburgerMenu ? "nav-items hamburger-menu" : "nav-items"
+            }
+          >
             <NavLink to="/products" style={getStyle}>
               Products
             </NavLink>
@@ -44,9 +59,19 @@ export const Navbar = () => {
               Cart
             </NavLink>
             <NavLink to="/login" style={getStyle}>
-              <button>Login</button>
+              <FontAwesomeIcon icon={faUser} />
             </NavLink>
             {/* <NavLink to="/mockman">Mockman</NavLink> */}
+          </div>
+          <div
+            className="hamburger-icon"
+            onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}
+          >
+            {showHamburgerMenu ? (
+              <FontAwesomeIcon icon={faXmark} />
+            ) : (
+              <FontAwesomeIcon icon={faBars} />
+            )}
           </div>
         </div>
       </div>

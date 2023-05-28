@@ -5,11 +5,10 @@ import { Products } from "./frontend/pages/Products";
 import { Cart } from "./frontend/pages/Cart";
 import { Whishlist } from "./frontend/pages/Wishlist";
 import { Root } from "./frontend/pages/Root";
-import { Login } from "./frontend/pages/login/Login";
+import { Login } from "./frontend/pages/Login";
 import { RequiresAuth } from "./frontend/authentication/requiresAuth";
 import Mockman from "mockman-js";
 import { SignUp } from "./frontend/pages/SignUp";
-
 function App() {
   return (
     <div className="App">

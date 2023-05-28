@@ -5,3 +5,225 @@
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
+
+:root {
+  --primary-color: rgba(29, 54, 111, 1);
+  --secondary-color: rgb(22, 197, 129);
+  --heading-size-desktop: 24px;
+  --heading-size-tablet: 16px;
+  --heading-size-mobile: 8px;
+}
+/****************Nav Bar********************/
+.nav-main {
+  display: grid;
+  grid-auto-flow: column;
+  padding: 0.5rem 10rem;
+  background-color: rgba(29, 54, 111, 1);
+}
+.nav-left {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-search button {
+  margin: 0 0 10px 0;
+  border-radius: 0 5px 5px 0;
+}
+.nav-search input[type="text"] {
+  min-width: 300px;
+  border-radius: 5px 0 0 5px;
+  margin: 10px 0 10px 0;
+  color: grey;
+}
+.nav-search input[type="text"],
+.nav-left button {
+  border: 1px solid grey;
+  margin-top: 10px;
+}
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+  margin: 0 0 10px 0;
+}
+.hamburger-icon {
+  color: white;
+  display: none;
+}
+
+@media (max-width: 968px) {
+  .nav-left {
+    gap: 30px;
+  }
+  .nav-search input[type="text"] {
+    min-width: max-content;
+  }
+  .hamburger-icon {
+    display: block;
+    margin-top: 10px;
+  }
+  .nav-items {
+    display: none;
+  }
+}
+/*****************Product Card******************/
+.product-card {
+  width: 20%;
+  height: 280px;
+  margin: 2%;
+  background-color: lightgrey;
+  position: relative;
+  text-align: left;
+}
+
+.product-card img {
+  width: 100%;
+  height: 60%;
+}
+
+.bestseller-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  color: white;
+}
+.rating-strip {
+  position: absolute;
+  top: 130px;
+  left: 0;
+  background-color: green;
+  color: white;
+}
+.product-card-content {
+  margin-left: 5px;
+}
+
+/**************Filter**********/
+.filters-container {
+  text-align: left;
+  padding: 10px;
+  background-color: lightblue;
+}
+
+/********* Login *********/
+.login-main {
+  height: 500px;
+  width: max-content;
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: grey;
+  border-radius: 20px;
+}
+.login-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+input {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+}
+button {
+  width: max-content;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+}
+
+/************Home**********/
+.home {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.hero {
+  position: relative;
+  height: 500px;
+}
+
+.hero-image-container {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-content {
+  color: green;
+  font-size: 25px;
+  position: absolute;
+  width: 500px;
+  top: 100px;
+  left: 20px;
+}
+.hero-content button {
+  background-color: rgba(29, 54, 111, 1);
+  color: lightgreen;
+  padding: 10px 30px;
+  border: none;
+  font-weight: bold;
+}
+
+.home-categories {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px;
+}
+.category_card {
+  background-color: rgba(29, 54, 111, 0.5);
+  padding: 10px;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+.category_card img {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+
+.cakes-categories {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 400px;
+  margin: 40px 0;
+  background-color: lightgrey;
+}
+
+.cake-card {
+  width: max-content;
+  background-color: white;
+  width: 20%;
+  margin: 5% 2% 2% 2%;
+}
+.cake-card img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
+
+/*********Products********/
+.products-main {
+  display: grid;
+  grid-template-columns: 18% auto;
+}
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}

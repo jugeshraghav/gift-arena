@@ -4,8 +4,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [userLoginEmail, setUserLoginEmail] = useState("");
-  const [userLoginPwd, setUserLoginPwd] = useState("");
+  const [userLoginDetails, setUserLoginDetails] = useState({
+    email: "",
+    password: "",
+  });
 
   const [signUpDetails, setSignUpDetails] = useState({
     firstName: "",
@@ -19,43 +21,30 @@ export const AuthProvider = ({ children }) => {
 
   const getUSerLoginToken = async () => {
     const creds = {
-      email: userLoginEmail,
-      password: userLoginPwd,
+      email: userLoginDetails.email,
+      password: userLoginDetails.password,
     };
     try {
       const response = await fetch("/api/auth/login", {
         method: "POST",
         body: JSON.stringify(creds),
       });
-      // console.log(await response.json());
+
       const { encodedToken, foundUser } = await response.json();
-      console.log(foundUser);
-      localStorage.setItem("encodedUserLoginToken", encodedToken);
-      localStorage.setItem("userDetailsAfterLogin", JSON.stringify(foundUser));
+      localStorage.setItem("token", encodedToken);
     } catch (e) {
       console.log(e);
     }
   };
 
-  const encodedUserLoginToken = localStorage.getItem("encodedUserLoginToken");
-  const userDetailsAfterLogin = localStorage.getItem("userDetailsAfterLogin");
-  console.log(userDetailsAfterLogin);
-
   const loginHandler = async () => {
-    if (!encodedUserLoginToken) {
-      await getUSerLoginToken();
-      if (encodedUserLoginToken !== undefined) {
-        if (location?.state?.from === undefined) {
-          navigate("/");
-        } else {
-          navigate(location?.state?.from);
-        }
-      }
-    }
+    await getUSerLoginToken();
+
+    navigate(location?.state?.from);
   };
 
   const logoutHandler = () => {
-    localStorage.removeItem("encodedUserLoginToken");
+    localStorage.removeItem("token");
     navigate("/login");
   };
 
@@ -65,17 +54,20 @@ export const AuthProvider = ({ children }) => {
         method: "POST",
         body: JSON.stringify(signUpDetails),
       });
-      // const { encodedToken } = await response.json();
-      // console.log(encodedToken);
-      console.log(await response.json());
-      // localStorage.setItem("encodedUserSignUpToken", encodedToken);
+      const data = await response.json();
+
+      localStorage.setItem("token", data.encodedToken);
+      localStorage.setItem("userDetails", JSON.stringify(data.createdUser));
     } catch (e) {
       console.log(e);
     }
   };
-  const encodedUserSignUpToken = localStorage.getItem("encodedUserSignUpToken");
-  const signUpHandler = async () => {
-    await getUserSignUpToken();
+
+  const encodedToken = localStorage.getItem("token");
+
+  const signUpHandler = () => {
+    getUserSignUpToken();
+    navigate("/");
   };
 
   return (
@@ -83,12 +75,9 @@ export const AuthProvider = ({ children }) => {
       value={{
         loginHandler,
         logoutHandler,
-        userLoginEmail,
-        setUserLoginEmail,
-        userLoginPwd,
-        setUserLoginPwd,
-        encodedUserLoginToken,
-        userDetailsAfterLogin,
+        userLoginDetails,
+        setUserLoginDetails,
+        encodedToken,
         signUpDetails,
         signUpHandler,
         setSignUpDetails,

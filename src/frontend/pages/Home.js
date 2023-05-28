@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { DataContext } from "../contexts/dataContext";
 import { hero_img } from "../assets/links";
 
-import "./home.css";
+import "../../App.css";
 
 export const Home = () => {
   const { cakes, flowers, plants, categories } = useContext(DataContext);

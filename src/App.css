@@ -9,64 +9,18 @@
 :root {
   --primary-color: rgba(29, 54, 111, 1);
   --secondary-color: rgb(22, 197, 129);
-  --heading-size-desktop: 24px;
-  --heading-size-tablet: 16px;
-  --heading-size-mobile: 8px;
+  --heading-desktop: 2rem;
+  --heading-tablet: 1.5rem;
+  --heading-mobile: 1rem;
+  --sub-heading-desktop: 1.75rem;
+  --sub-heading-tablet: 1.5rem;
+  --sub-heading-mobile: 1.25rem;
+  --content-desktop: 1.25rem;
+  --content-tablet: 1.125rem;
+  --content-mobile: 1rem;
 }
 /****************Nav Bar********************/
-.nav-main {
-  display: grid;
-  grid-auto-flow: column;
-  padding: 0.5rem 10rem;
-  background-color: rgba(29, 54, 111, 1);
-}
-.nav-left {
-  display: flex;
-  gap: 30px;
-}
 
-.nav-search button {
-  margin: 0 0 10px 0;
-  border-radius: 0 5px 5px 0;
-}
-.nav-search input[type="text"] {
-  min-width: 300px;
-  border-radius: 5px 0 0 5px;
-  margin: 10px 0 10px 0;
-  color: grey;
-}
-.nav-search input[type="text"],
-.nav-left button {
-  border: 1px solid grey;
-  margin-top: 10px;
-}
-.nav-items {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-top: 10px;
-  margin: 0 0 10px 0;
-}
-.hamburger-icon {
-  color: white;
-  display: none;
-}
-
-@media (max-width: 968px) {
-  .nav-left {
-    gap: 30px;
-  }
-  .nav-search input[type="text"] {
-    min-width: max-content;
-  }
-  .hamburger-icon {
-    display: block;
-    margin-top: 10px;
-  }
-  .nav-items {
-    display: none;
-  }
-}
 /*****************Product Card******************/
 .product-card {
   width: 20%;
@@ -142,12 +96,13 @@ button {
 /************Home**********/
 .home {
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-rows: repeat(5 1fr);
 }
 
 .hero {
   position: relative;
   height: 500px;
+  width: 100%;
 }
 
 .hero-image-container {
@@ -178,6 +133,7 @@ button {
 
 .home-categories {
   display: flex;
+  /* flex-wrap: wrap; */
   justify-content: space-around;
   margin: 40px;
 }
@@ -189,28 +145,74 @@ button {
   border-radius: 100%;
 }
 .category_card img {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   border-radius: 100%;
 }
+.category_card p {
+  font-weight: bold;
+  color: var(--primary-color);
+}
 
-.cakes-categories {
+@media (max-width: 968px) {
+  .hero {
+    height: 400px;
+  }
+  .hero-content {
+    font-size: 20px;
+    top: 80px;
+    left: 8px;
+    width: 400px;
+  }
+}
+@media (max-width: 420px) {
+  .hero {
+    height: 350px;
+  }
+  .hero-content {
+    font-size: 15px;
+    top: 80px;
+    left: 5px;
+    width: 250px;
+  }
+  .hero-content button {
+    padding: 5px 10px;
+  }
+  .home-categories {
+    margin: 20px;
+    justify-content: space-between;
+  }
+  .category_card {
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    /* margin: 20px; */
+  }
+  /* .category_card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+} */
+}
+
+.home-items-list {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
-  width: 100%;
-  height: 400px;
+  min-width: 100%;
+  min-height: 400px;
   margin: 40px 0;
   background-color: lightgrey;
 }
 
-.cake-card {
+.item-card {
   width: max-content;
   background-color: white;
   width: 20%;
   margin: 5% 2% 2% 2%;
 }
-.cake-card img {
+.item-card img {
   width: 100%;
   height: 80%;
   object-fit: cover;

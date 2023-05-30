@@ -7,9 +7,10 @@ import {
   faMagnifyingGlass,
   faBars,
   faXmark,
+  faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 
-import "../../../App.css";
+import "./navbar.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authenticationContext";
 export const Navbar = () => {
@@ -26,29 +27,50 @@ export const Navbar = () => {
   return (
     <>
       <div className="nav-main">
-        <div className="nav-left">
-          <div className="nav-logo">
-            <NavLink to="/">
-              <img src={Logo} alt="gift arena" height="50px"></img>
-            </NavLink>
-          </div>
-          <div className="nav-search">
-            <input
-              type="text"
-              placeholder="search flowers, cakes, gifts etc..."
-            ></input>
-            <button>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </div>
+        <div className="nav-logo">
+          <NavLink to="/">
+            <img src={Logo} alt="gift arena"></img>
+          </NavLink>
+        </div>
+        <div className="nav-search">
+          <input
+            type="text"
+            placeholder="search flowers, cakes, gifts etc..."
+          ></input>
+          <button>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
         </div>
 
-        <div className="nav-right">
-          <div
-            className={
-              showHamburgerMenu ? "nav-items hamburger-menu" : "nav-items"
-            }
-          >
+        <div className="nav-links">
+          <NavLink to="/products" style={getStyle}>
+            Products
+          </NavLink>
+          <NavLink to="/wishlist" style={getStyle}>
+            Wishlist
+          </NavLink>
+          <NavLink to="/cart" style={getStyle}>
+            Cart
+          </NavLink>
+          <NavLink to="/login" style={getStyle}>
+            <FontAwesomeIcon icon={faUser} />
+          </NavLink>
+          {/* <NavLink to="/mockman">Mockman</NavLink> */}
+        </div>
+        <div
+          className="hamburger-icon"
+          onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}
+        >
+          {showHamburgerMenu ? (
+            <FontAwesomeIcon icon={faXmark} />
+          ) : (
+            <FontAwesomeIcon icon={faBars} />
+          )}
+        </div>
+      </div>
+      {showHamburgerMenu && (
+        <div className="hamburger-menu">
+          <div className="hamburger-menu-links">
             <NavLink to="/products" style={getStyle}>
               Products
             </NavLink>
@@ -61,20 +83,9 @@ export const Navbar = () => {
             <NavLink to="/login" style={getStyle}>
               <FontAwesomeIcon icon={faUser} />
             </NavLink>
-            {/* <NavLink to="/mockman">Mockman</NavLink> */}
-          </div>
-          <div
-            className="hamburger-icon"
-            onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}
-          >
-            {showHamburgerMenu ? (
-              <FontAwesomeIcon icon={faXmark} />
-            ) : (
-              <FontAwesomeIcon icon={faBars} />
-            )}
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

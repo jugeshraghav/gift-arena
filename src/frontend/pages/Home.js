@@ -3,6 +3,7 @@ import { DataContext } from "../contexts/dataContext";
 import { hero_img } from "../assets/links";
 
 import "../../App.css";
+import { NavLink } from "react-router-dom";
 
 export const Home = () => {
   const { cakes, flowers, plants, categories } = useContext(DataContext);
@@ -15,8 +16,10 @@ export const Home = () => {
           </div>
 
           <div className="hero-content">
-            <h1>Get gift for every occassion</h1>
-            <button>Explore</button>
+            <h1>Get gifts for every occassion</h1>
+            <NavLink to="/products">
+              <button>Explore</button>
+            </NavLink>
           </div>
         </div>
         <div className="home-categories">
@@ -28,27 +31,27 @@ export const Home = () => {
           ))}
         </div>
 
-        <div className="cakes-categories">
+        <div className="home-items-list">
           {cakes.slice(0, 4).map(({ name, imageUrl, altText }) => (
-            <div className="cake-card">
+            <div className="item-card">
               <img src={imageUrl} alt={altText} />
               <p>{name}</p>
             </div>
           ))}
         </div>
 
-        <div className="cakes-categories">
+        <div className="home-items-list">
           {plants.slice(0, 4).map(({ name, imageUrl, altText }) => (
-            <div className="cake-card">
+            <div className="item-card">
               <img src={imageUrl} alt={altText} />
               <p>{name}</p>
             </div>
           ))}
         </div>
 
-        <div className="cakes-categories">
+        <div className="home-items-list">
           {flowers.slice(0, 4).map(({ name, imageUrl, altText }) => (
-            <div className="cake-card">
+            <div className="item-card">
               <img src={imageUrl} alt={altText} />
               <p>{name}</p>
             </div>

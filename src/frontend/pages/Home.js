@@ -22,40 +22,64 @@ export const Home = () => {
             </NavLink>
           </div>
         </div>
-        <div className="home-categories">
-          {categories.map(({ _id, categoryName, image }) => (
-            <div className="category_card" key={_id}>
-              <img src={image}></img>
-              <p>{categoryName}</p>
-            </div>
-          ))}
+        <div className="home-categories-container">
+          <p className="home-categories-heading">
+            Select from given categories
+          </p>
+          <div className="home-categories">
+            {categories.map(({ _id, categoryName, image }) => (
+              <div className="category_card" key={_id}>
+                <img src={image}></img>
+                <p>{categoryName}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="home-items-list">
-          {cakes.slice(0, 4).map(({ name, imageUrl, altText }) => (
-            <div className="item-card">
-              <img src={imageUrl} alt={altText} />
-              <p>{name}</p>
-            </div>
-          ))}
+        <div className="home-items-list-container">
+          <div className="home-items-list-content">
+            <p>Tempting Cakes</p>
+            <button>View All</button>
+          </div>
+
+          <div className="home-items-list">
+            {cakes.slice(0, 4).map(({ name, imageUrl, altText }) => (
+              <div className="item-card">
+                <img src={imageUrl} alt={altText} />
+                <p>{name}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="home-items-list">
-          {plants.slice(0, 4).map(({ name, imageUrl, altText }) => (
-            <div className="item-card">
-              <img src={imageUrl} alt={altText} />
-              <p>{name}</p>
-            </div>
-          ))}
+        <div className="home-items-list-container">
+          <div className="home-items-list-content">
+            <p>Indoor Plants</p>
+            <button>View All</button>
+          </div>
+          <div className="home-items-list">
+            {plants.slice(0, 4).map(({ name, imageUrl, altText }) => (
+              <div className="item-card">
+                <img src={imageUrl} alt={altText} />
+                <p>{name}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="home-items-list">
-          {flowers.slice(0, 4).map(({ name, imageUrl, altText }) => (
-            <div className="item-card">
-              <img src={imageUrl} alt={altText} />
-              <p>{name}</p>
-            </div>
-          ))}
+        <div className="home-items-list-container">
+          <div className="home-items-list-content">
+            <p>Elegant Flowers</p>
+            <button>View All</button>
+          </div>
+          <div className="home-items-list">
+            {flowers.slice(0, 4).map(({ name, imageUrl, altText }) => (
+              <div className="item-card">
+                <img src={imageUrl} alt={altText} />
+                <p>{name}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

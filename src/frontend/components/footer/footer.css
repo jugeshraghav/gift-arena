@@ -1,0 +1,27 @@
+.footer-container {
+  background-color: var(--primary-color);
+  color: white;
+  margin: 0;
+  padding: 0.5rem 0 1rem 0;
+}
+.footer-container p {
+  margin: 0 0 1rem 0;
+}
+.footer-container p:first-child {
+  font-weight: bold;
+  /* color: var(--secondary-color); */
+}
+.footer-icons a {
+  margin: 1rem 1rem 1.5rem 1rem;
+  font-size: 20px;
+  width: 20px;
+  height: 50px;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-radius: 100%;
+}
+.footer-icons a:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}

@@ -7,7 +7,6 @@ import {
   faMagnifyingGlass,
   faBars,
   faXmark,
-  faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./navbar.css";

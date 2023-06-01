@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import "../../../App.css";
+import "./filter.css";
 import { FilterContext } from "../../contexts/filterContext";
 
 export const Filter = () => {
@@ -22,8 +22,9 @@ export const Filter = () => {
     <>
       <div className="filters-container">
         <h4>Filters</h4>
+        <hr></hr>
         <div className="product-type-filter">
-          <h5>Filter By Category</h5>
+          <h4>Filter By Category</h4>
           <div>
             <input
               type="checkbox"
@@ -49,8 +50,9 @@ export const Filter = () => {
             Plants
           </div>
         </div>
+        <hr></hr>
         <div className="product-price-filter">
-          <h5>Filter By Price Range</h5>
+          <h4>Filter By Price Range</h4>
           <div>
             <input
               type="range"
@@ -62,8 +64,9 @@ export const Filter = () => {
             <p></p>
           </div>
         </div>
+        <hr></hr>
         <div className="product-sort-filter">
-          <h5>Sort By Price</h5>
+          <h4>Sort By Price</h4>
           <div>
             <input
               type="radio"
@@ -83,8 +86,9 @@ export const Filter = () => {
             High To Low
           </div>
         </div>
+        <hr></hr>
         <div className="product-rating-filter">
-          <h5>Filter By Rating</h5>
+          <h4>Filter By Rating</h4>
           <div>
             <input
               type="radio"

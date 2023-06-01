@@ -17,10 +17,16 @@ export const Products = () => {
         <div className="product-filters">
           <Filter />
         </div>
-        <div className="products-list">
-          {filteredProducts.map((product) => (
-            <ProductCard cardDetails={product} from="products" />
-          ))}
+        <div className="products-list-container">
+          <div className="product-list-header">
+            <button className="show-filters-button">Filters</button>
+            <h2>Showing all Products</h2>
+          </div>
+          <div className="products-list">
+            {filteredProducts.map((product) => (
+              <ProductCard cardDetails={product} from="products" />
+            ))}
+          </div>
         </div>
       </div>
     </>

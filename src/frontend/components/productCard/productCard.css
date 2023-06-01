@@ -1,40 +1,68 @@
 .product-card {
-  width: 250px;
-  height: 300px;
-  margin: 2%;
-  background-color: lightgrey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 15px;
+  width: 200px;
+  height: 350px;
+  margin: 0.5rem;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(90, 90, 90, 0.3);
   position: relative;
   text-align: left;
+  padding: 8px;
 }
 
 .product-card img {
   width: 100%;
   height: 60%;
 }
+.product-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  gap: 5px;
+}
+.product-card-text {
+  font-weight: bold;
+  color: black;
+}
+
+.product-card p {
+  margin: 0.3rem;
+}
+.rating-strip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: green;
+  color: white;
+  font-size: 12px;
+  margin: 0;
+  padding: 0.2rem 0.4rem;
+}
+
+.product-card button:last-child {
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
 
 .bestseller-strip {
+  background-color: var(--primary-color);
+  color: white;
+  min-width: max-content;
+  padding: 0.2rem 0.5rem;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: var(--primary-color);
-  color: white;
-  padding: 2px 4px;
-  margin: 0;
 }
-.rating-strip {
-  position: absolute;
-  display: flex;
-  /* justify-content: spcae-around; */
-  align-items: center;
-  gap: 4px;
-  padding: 2px 4px;
-  /* width: 25px; */
-  top: 130px;
-  left: 0;
-  background-color: green;
-  color: white;
-  margin: 0;
-}
+
 .wishlist-strip {
   border: none;
   border-radius: 100%;
@@ -44,11 +72,44 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 20px;
-  height: 20px;
-  margin: 0.5rem;
-  padding: 0.2rem;
+  width: 30px;
+  height: 30px;
+  margin: 0.2rem;
+  padding: 0.33rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
-.product-card-content {
-  margin-left: 5px;
+
+@media (max-width: 968px) {
+  .product-card {
+    font-size: 13px;
+    width: 200px;
+    height: 350px;
+    margin: 0.5rem;
+    padding: 8px;
+  }
+
+  .rating-strip {
+    gap: 4px;
+    font-size: 12px;
+    margin: 0;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .product-card button:last-child {
+    padding: 0.5rem;
+  }
+
+  .bestseller-strip {
+    padding: 0.2rem 0.5rem;
+  }
+
+  .wishlist-strip {
+    width: 30px;
+    height: 30px;
+    margin: 0.2rem;
+    padding: 0.33rem;
+  }
+}
+
+@media (max-width: 420px) {
 }

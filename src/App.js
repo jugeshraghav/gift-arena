@@ -9,6 +9,7 @@ import { Login } from "./frontend/pages/Login";
 import { RequiresAuth } from "./frontend/authentication/requiresAuth";
 import Mockman from "mockman-js";
 import { SignUp } from "./frontend/pages/SignUp";
+import { ProductDetail } from "./frontend/pages/ProductDetail";
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,10 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/mockman" element={<Mockman />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/product-detail/:product_id"
+            element={<ProductDetail />}
+          />
           <Route
             path="/wishlist"
             element={

@@ -10,16 +10,16 @@ export const Footer = () => {
         <p>Connect With Me @Jugesh Raghav</p>
         <div className="footer-icons">
           <a>
-            <FontAwesomeIcon icon={faInstagram} />
+            <FontAwesomeIcon icon={faInstagram} shake />
           </a>
           <a>
-            <FaGithub />
+            <FaGithub shake />
           </a>
           <a>
-            <FaLinkedin />
+            <FaLinkedin shake />
           </a>
           <a>
-            <FontAwesomeIcon icon={faTwitter} />
+            <FontAwesomeIcon icon={faTwitter} shake />
           </a>
           {/* <FontAwesomeIcon icon={faGitHub} /> */}
           {/* <FontAwesomeIcon icon={faAlternateGitHub} /> */}

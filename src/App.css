@@ -1,9 +1,13 @@
+* {
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
   /* font-family: "Righteous", cursive; */
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+  /* position: relative; */
 }
 
 :root {
@@ -18,13 +22,6 @@
   --content-desktop: 1.25rem;
   --content-tablet: 1.125rem;
   --content-mobile: 1rem;
-}
-
-/**************Filter**********/
-.filters-container {
-  text-align: left;
-  padding: 10px;
-  background-color: lightblue;
 }
 
 /********* Login *********/
@@ -175,6 +172,35 @@ button {
   color: var(--primary-color);
 }
 
+/*********Products********/
+.products-main {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+.product-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+.show-filters-button {
+  /* display: none; */
+  background-color: rgba(29, 54, 111, 1);
+  color: lightgreen;
+  padding: 10px 30px;
+  border: none;
+  font-weight: bold;
+}
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+.products-list a {
+  text-decoration: none;
+}
+
 @media (max-width: 968px) {
   .hero {
     height: 400px;
@@ -209,6 +235,13 @@ button {
   }
   .item-card img {
     height: 75%;
+  }
+  .product-filters {
+    display: none;
+  }
+  .show-filters-button {
+    display: block;
+    padding: 8px 20px;
   }
 }
 @media (max-width: 420px) {
@@ -253,16 +286,4 @@ button {
   .item-card img {
     height: 70%;
   }
-}
-
-/*********Products********/
-.products-main {
-  display: grid;
-  grid-template-columns: 18% auto;
-}
-.products-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 100%;
 }

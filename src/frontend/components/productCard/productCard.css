@@ -16,7 +16,7 @@
 
 .product-card img {
   width: 100%;
-  height: 60%;
+  height: 100%;
 }
 .product-card-title {
   display: flex;

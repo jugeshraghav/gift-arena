@@ -1,9 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { dataReducer, initial_state } from "../reducers/dataReducer";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(dataReducer, initial_state);
+  const { user } = state;
+
   const [userLoginDetails, setUserLoginDetails] = useState({
     email: "",
     password: "",
@@ -32,6 +36,9 @@ export const AuthProvider = ({ children }) => {
 
       const { encodedToken, foundUser } = await response.json();
       localStorage.setItem("token", encodedToken);
+      // console.log(foundUser);
+      dispatch({ type: "get_user_details", payLoad: foundUser });
+      localStorage.setItem("userDetails", JSON.stringify(foundUser));
     } catch (e) {
       console.log(e);
     }
@@ -57,6 +64,7 @@ export const AuthProvider = ({ children }) => {
       const data = await response.json();
 
       localStorage.setItem("token", data.encodedToken);
+      dispatch({ type: "get_user_details", payLoad: data?.createdUser });
       localStorage.setItem("userDetails", JSON.stringify(data.createdUser));
     } catch (e) {
       console.log(e);
@@ -70,6 +78,7 @@ export const AuthProvider = ({ children }) => {
     navigate("/");
   };
 
+  console.log("state from auth con", state);
   return (
     <AuthContext.Provider
       value={{
@@ -81,6 +90,7 @@ export const AuthProvider = ({ children }) => {
         signUpDetails,
         signUpHandler,
         setSignUpDetails,
+        user,
       }}
     >
       {children}

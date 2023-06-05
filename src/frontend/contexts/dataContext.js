@@ -8,8 +8,10 @@ export const DataProvider = ({ children }) => {
   //   const [categories, setCategories] = useState([]);
 
   const [state, dispatch] = useReducer(dataReducer, initial_state);
-  const { allProducts, categories, cart, wishlist } = state;
+  const { allProducts, categories, cart, wishlist, address } = state;
   // console.log("from data context", state);
+
+  const encodedToken = localStorage.getItem("token");
 
   const cakes = state?.allProducts?.filter(
     ({ category }) => category === "Cake"
@@ -24,8 +26,12 @@ export const DataProvider = ({ children }) => {
   const getData = async () => {
     try {
       const response = await fetch("/api/products");
-      const products = await response.json();
-      dispatch({ type: "get_all_products", payLoad: products?.products });
+      const data = await response.json();
+      console.log(data);
+      dispatch({
+        type: "get_all_products",
+        payLoad: data?.products,
+      });
     } catch (e) {
       console.log(e);
     }
@@ -40,10 +46,42 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  const getCartItems = async () => {
+    try {
+      const response = await fetch("/api/user/cart", {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      const cart = await response.json();
+      console.log(cart);
+      dispatch({ type: "get_cart", payLoad: cart?.cart });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getWishlistItems = async () => {
+    try {
+      const response = await fetch("/api/user/wishlist", {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      const wishlist = await response.json();
+      console.log(wishlist);
+      dispatch({ type: "get_wishlist", payLoad: wishlist?.wishlist });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   useEffect(() => {
     getData();
     getCategories();
   }, []);
+
+  console.log("state from DATA con", state);
   return (
     <DataContext.Provider
       value={{
@@ -54,6 +92,9 @@ export const DataProvider = ({ children }) => {
         categories,
         cart,
         wishlist,
+        address,
+        getCartItems,
+        getWishlistItems,
         addDataDispatch: dispatch,
       }}
     >

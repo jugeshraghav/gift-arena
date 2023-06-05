@@ -1,18 +1,23 @@
 import { useContext } from "react";
 import { DataContext } from "../contexts/dataContext";
 import { ProductCard } from "../components/productCard/ProductCard";
+import "../../App.css";
 
 export const Whishlist = () => {
-  const { allProducts, wishlist } = useContext(DataContext);
-  //   console.log(allProducts, wishlist);
+  const { wishlist } = useContext(DataContext);
+  console.log(wishlist);
   return (
     <>
-      <h1>Hello from Whishlist</h1>
-      {allProducts.map(
-        (product) =>
-          wishlist.includes(product._id) && (
-            <ProductCard cardDetails={product} from="wishlist" />
-          )
+      {wishlist.length === 0 ? (
+        <h1>You haven't added anything to wishlist Yet</h1>
+      ) : (
+        <div className="products-main">
+          <div className="products-list">
+            {wishlist.map((product) => (
+              <ProductCard cardDetails={product} />
+            ))}
+          </div>
+        </div>
       )}
     </>
   );

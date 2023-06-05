@@ -1,7 +1,7 @@
-export const isInCart = (cartArr, productId) => {
-  return cartArr.filter((_id) => _id === productId);
+export const isInCart = (cart, productId) => {
+  return cart.some((product) => product._id === productId);
 };
 
-export const isInWishlist = (wishlistArr, productId) => {
-  return wishlistArr.filter((_id) => _id === productId);
+export const isInWishlist = (wishlist, productId) => {
+  return wishlist.some((product) => product._id === productId);
 };

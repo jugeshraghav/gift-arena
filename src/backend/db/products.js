@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: 1,
+    _id: "1",
     name: "Chocolate Truffle Cake",
     price: 25.99,
     imageUrl:
@@ -19,7 +19,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 2,
+    _id: "2",
     name: "Vanilla Celebration Cake",
     price: 29.99,
     imageUrl:
@@ -31,7 +31,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 3,
+    _id: "3",
     name: "Red Velvet Cupcakes",
     price: 19.99,
     imageUrl:
@@ -43,7 +43,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 4,
+    _id: "4",
     name: "Rainbow Cake",
     price: 49.99,
     imageUrl:
@@ -55,7 +55,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 5,
+    _id: "5",
     name: "Black Forest Cake",
     price: 34.99,
     imageUrl:
@@ -67,7 +67,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 6,
+    _id: "6",
     name: "Cheesecake Sampler",
     price: 39.99,
     imageUrl:
@@ -79,7 +79,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 7,
+    _id: "7",
     name: "Carrot Cake",
     price: 24.99,
     imageUrl:
@@ -91,7 +91,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 8,
+    _id: "8",
     name: "Triple Chocolate Cake",
     price: 39.99,
     imageUrl:
@@ -103,7 +103,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 9,
+    _id: "9",
     name: "Cheesecake Brownies",
     price: 19.99,
     imageUrl:
@@ -115,7 +115,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 10,
+    _id: "10",
     name: "Classic Chocolate Cake",
     price: 39.99,
     imageUrl:
@@ -127,7 +127,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 11,
+    _id: "11",
     name: "Strawberry Shortcake",
     price: 29.99,
     imageUrl:
@@ -139,7 +139,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 12,
+    _id: "13",
     name: "Red Velvet Cake",
     price: 34.99,
     imageUrl:
@@ -151,7 +151,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 13,
+    _id: "13",
     name: "Vanilla Pound Cake",
     price: 24.99,
     imageUrl:
@@ -163,7 +163,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 14,
+    _id: "14",
     name: "Classic Vanilla Cake",
     price: 49.99,
     imageUrl:
@@ -175,7 +175,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 15,
+    _id: "15",
     name: "Chocolate Fudge Cake",
     price: 39.99,
     imageUrl:
@@ -187,7 +187,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 16,
+    _id: "16",
     name: "Lemon Poppy Seed Cake",
     price: 29.99,
     imageUrl:
@@ -199,7 +199,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 17,
+    _id: "17",
     name: "Marble Pound Cake",
     price: 34.99,
     imageUrl:
@@ -211,7 +211,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 18,
+    _id: "18",
     name: "Salted Caramel Cake",
     price: 39.99,
     imageUrl:
@@ -223,7 +223,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 19,
+    _id: "19",
     name: "Mango Mousse Cake",
     price: 49.99,
     imageUrl:
@@ -235,7 +235,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 20,
+    _id: "20",
     name: "Raspberry Chocolate Cake",
     price: 34.99,
     imageUrl:
@@ -247,7 +247,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 21,
+    _id: "21",
     name: "Coconut Cream Cake",
     price: 29.99,
     imageUrl:
@@ -260,7 +260,7 @@ export const products = [
   },
 
   {
-    _id: 22,
+    _id: "22",
     name: "Money Tree",
     price: 29.99,
     imageUrl:
@@ -272,7 +272,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 23,
+    _id: "23",
     name: "Jade Plant",
     price: 24.99,
     imageUrl:
@@ -284,7 +284,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 24,
+    _id: "24",
     name: "Snake Plant",
     price: 19.99,
     imageUrl:
@@ -296,7 +296,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 25,
+    _id: "25",
     name: "Bonsai Plant",
     price: 34.99,
     imageUrl:
@@ -308,7 +308,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 26,
+    _id: "26",
     name: "Bamboo Palm",
     price: 27.99,
     imageUrl:
@@ -321,7 +321,7 @@ export const products = [
   },
 
   {
-    _id: 27,
+    _id: "27",
     name: "Roses",
     price: 12.99,
     imageUrl:
@@ -333,7 +333,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 28,
+    _id: "28",
     name: "Lilies",
     price: 9.99,
     imageUrl:
@@ -345,7 +345,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 29,
+    _id: "29",
     name: "Daisies",
     price: 7.99,
     imageUrl:
@@ -357,7 +357,7 @@ export const products = [
     bestseller: true,
   },
   {
-    _id: 30,
+    _id: "30",
     name: "Orchids",
     price: 14.99,
     imageUrl:
@@ -369,7 +369,7 @@ export const products = [
     bestseller: false,
   },
   {
-    _id: 31,
+    _id: "31",
     name: "Sunflowers",
     price: 11.99,
     imageUrl:

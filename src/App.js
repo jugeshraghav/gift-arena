@@ -5,11 +5,18 @@ import { Products } from "./frontend/pages/Products";
 import { Cart } from "./frontend/pages/Cart";
 import { Whishlist } from "./frontend/pages/Wishlist";
 import { Root } from "./frontend/pages/Root";
-import { Login } from "./frontend/pages/Login";
 import { RequiresAuth } from "./frontend/authentication/requiresAuth";
 import Mockman from "mockman-js";
-import { SignUp } from "./frontend/pages/SignUp";
 import { ProductDetail } from "./frontend/pages/ProductDetail";
+import { LoginCard } from "./frontend/pages/loginCard/LoginCard";
+import { SignupCard } from "./frontend/pages/signupCard/SignupCard";
+import { User } from "./frontend/components/user/User";
+
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+import { Checkout } from "./frontend/pages/Checkout";
+export { toast };
 function App() {
   return (
     <div className="App">
@@ -18,7 +25,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/mockman" element={<Mockman />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signup" element={<SignupCard />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route
             path="/product-detail/:product_id"
             element={<ProductDetail />}
@@ -39,7 +47,8 @@ function App() {
               </RequiresAuth>
             }
           />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginCard />} />
+          <Route path="/user" element={<User />} />
         </Route>
       </Routes>
     </div>

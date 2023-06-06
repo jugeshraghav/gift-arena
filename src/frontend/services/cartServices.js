@@ -1,24 +1,30 @@
-import { DataContext } from "../contexts/dataContext";
-import { useContext } from "react";
-
 const encodedToken = localStorage.getItem("token");
 
-export const addToCartHandler = async (product, dispatch) => {
-  try {
-    console.log(product);
-    const response = await fetch(" /api/user/cart", {
-      method: "post",
-      body: JSON.stringify({ product }),
-      headers: {
-        authorization: encodedToken,
-      },
-    });
-    // getCartItems();
-    const cartObj = await response.json();
-    dispatch({ type: "add_to_cart", payLoad: cartObj?.cart });
-    console.log(await response.json());
-  } catch (e) {
-    console.log(e);
+export const addToCartHandler = async (
+  product,
+  dispatch,
+  navigate,
+  location
+) => {
+  if (encodedToken) {
+    try {
+      console.log(product);
+      const response = await fetch(" /api/user/cart", {
+        method: "post",
+        body: JSON.stringify({ product }),
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      // getCartItems();
+      const cartObj = await response.json();
+      dispatch({ type: "add_to_cart", payLoad: cartObj?.cart });
+      console.log(await response.json());
+    } catch (e) {
+      console.log(e);
+    }
+  } else {
+    navigate("/login", { state: { from: location?.pathname } });
   }
 };
 export const removeFromCartHandler = async (productId, dispatch) => {

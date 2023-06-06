@@ -11,6 +11,7 @@ import {
   removeFromWishlistHandler,
   addToWishlistHandler,
 } from "../../services/wishlistServices";
+import { useLocation, useNavigate } from "react-router";
 export const CartCard = ({ product }) => {
   const { _id, name, price, imageUrl, altText, qty, rating, bestseller } =
     product;
@@ -21,6 +22,8 @@ export const CartCard = ({ product }) => {
 
   const isProductInCart = isInCart(cart, _id);
   const isProductInWishlist = isInWishlist(wishlist, _id);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <>
@@ -64,7 +67,14 @@ export const CartCard = ({ product }) => {
             ) : (
               <button
                 className="cart-card-button"
-                onClick={() => addToWishlistHandler(product, addDataDispatch)}
+                onClick={() =>
+                  addToWishlistHandler(
+                    product,
+                    addDataDispatch,
+                    navigate,
+                    location
+                  )
+                }
               >
                 Add to Wishlist
               </button>

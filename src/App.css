@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 .App {
   text-align: center;
@@ -189,6 +191,37 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 2rem;
+}
+
+/******Checkout*****/
+.payment-page-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+  padding: 5rem;
+}
+
+.payment-card {
+  width: 80%;
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.payment-card div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.payment-card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.payment-card-subtitle {
+  font-size: 16px;
+  font-weight: bold;
 }
 @media (max-width: 968px) {
   .hero {

@@ -80,7 +80,7 @@ export const dataReducer = (state, action) => {
         ...state,
         cart: [...payLoad],
       };
-    case "checkout":
+    case "payment":
       return {
         ...state,
         cart: [],

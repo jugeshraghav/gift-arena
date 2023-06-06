@@ -2,6 +2,12 @@ import { useContext, useState } from "react";
 import "./addressModal.css";
 import { v4 as uuid } from "uuid";
 import { DataContext } from "../contexts/dataContext";
+import {
+  addAddressHandler,
+  editAddressFromModalHandler,
+  cancelAddressHAndler,
+  dummyAddressHandler,
+} from "../services/addressServices";
 export const AddressModal = ({
   addressId,
   setShowAddressModal,
@@ -10,45 +16,6 @@ export const AddressModal = ({
 }) => {
   const { addDataDispatch } = useContext(DataContext);
   console.log(addressId);
-  // const [newAddress, setNewAddress] = useState({
-  //   _id: uuid(),
-  //   name: "",
-  //   area: "",
-  //   city: "",
-  //   state: "",
-  //   pincode: "",
-  //   phoneNumber: "",
-  // });
-  const addAddressHandler = (address) => {
-    addDataDispatch({
-      type: "add_address",
-      payLoad: address,
-    });
-    setShowAddressModal(false);
-  };
-  const editAddressHandler = (addressId, newAddress) => {
-    addDataDispatch({
-      type: "edit_address",
-      addressId: addressId,
-      payLoad: newAddress,
-    });
-
-    setShowAddressModal(false);
-  };
-  const cancelAddressHAndler = () => {
-    setShowAddressModal(false);
-  };
-  const dummyAddressHandler = () => {
-    setNewAddress({
-      _id: uuid(),
-      name: "Jugesh Raghav",
-      area: "Hno-5, G-1, near Ram Mandir, Gagan Enclave",
-      city: "Jagatpuri",
-      state: "Delhi",
-      pincode: "110092",
-      phoneNumber: "1010101010",
-    });
-  };
   return (
     <>
       <div className="address-modal-container">
@@ -100,12 +67,33 @@ export const AddressModal = ({
                 }))
               }
             ></input>
-            <button onClick={() => addAddressHandler(newAddress)}>Add</button>
-            <button onClick={() => editAddressHandler(addressId, newAddress)}>
+            <button
+              onClick={() =>
+                addAddressHandler(
+                  newAddress,
+                  addDataDispatch,
+                  setShowAddressModal
+                )
+              }
+            >
+              Add
+            </button>
+            <button
+              onClick={() =>
+                editAddressFromModalHandler(
+                  addressId,
+                  newAddress,
+                  addDataDispatch,
+                  setShowAddressModal
+                )
+              }
+            >
               Edit
             </button>
-            <button onClick={() => cancelAddressHAndler()}>Cancel</button>
-            <button onClick={() => dummyAddressHandler()}>
+            <button onClick={() => cancelAddressHAndler(setShowAddressModal)}>
+              Cancel
+            </button>
+            <button onClick={() => dummyAddressHandler(setNewAddress)}>
               Fill with Dummy Values
             </button>
           </div>

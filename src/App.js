@@ -12,11 +12,9 @@ import { LoginCard } from "./frontend/pages/loginCard/LoginCard";
 import { SignupCard } from "./frontend/pages/signupCard/SignupCard";
 import { User } from "./frontend/components/user/User";
 
-import { ToastContainer, toast } from "react-toastify";
-
 import "react-toastify/dist/ReactToastify.css";
 import { Checkout } from "./frontend/pages/Checkout";
-export { toast };
+
 function App() {
   return (
     <div className="App">
@@ -26,7 +24,14 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/mockman" element={<Mockman />} />
           <Route path="/signup" element={<SignupCard />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/checkout"
+            element={
+              <RequiresAuth>
+                <Checkout />
+              </RequiresAuth>
+            }
+          />
           <Route
             path="/product-detail/:product_id"
             element={<ProductDetail />}
@@ -48,7 +53,14 @@ function App() {
             }
           />
           <Route path="/login" element={<LoginCard />} />
-          <Route path="/user" element={<User />} />
+          <Route
+            path="/user"
+            element={
+              <RequiresAuth>
+                <User />
+              </RequiresAuth>
+            }
+          />
         </Route>
       </Routes>
     </div>

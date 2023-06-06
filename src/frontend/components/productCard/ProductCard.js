@@ -1,6 +1,6 @@
 import { FaHeart, FaStar } from "react-icons/fa";
 import "./productCard.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { isInCart, isInWishlist } from "../../utils/productFunctions";
 import { useContext, useReducer } from "react";
 import { DataContext } from "../../contexts/dataContext";
@@ -20,7 +20,8 @@ export const ProductCard = (props) => {
 
   const isProductInCart = isInCart(cart, _id);
   const isProductInWishlist = isInWishlist(wishlist, _id);
-
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
     <>
       <div className="product-card">
@@ -55,7 +56,12 @@ export const ProductCard = (props) => {
           <button
             className="wishlist-strip"
             onClick={() =>
-              addToWishlistHandler(props.cardDetails, addDataDispatch)
+              addToWishlistHandler(
+                props.cardDetails,
+                addDataDispatch,
+                navigate,
+                location
+              )
             }
           >
             <FaHeart />
@@ -70,7 +76,14 @@ export const ProductCard = (props) => {
           </NavLink>
         ) : (
           <button
-            onClick={() => addToCartHandler(props.cardDetails, addDataDispatch)}
+            onClick={() =>
+              addToCartHandler(
+                props.cardDetails,
+                addDataDispatch,
+                navigate,
+                location
+              )
+            }
           >
             Add to Cart
           </button>

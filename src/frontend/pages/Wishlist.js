@@ -9,7 +9,6 @@ export const Whishlist = () => {
   console.log(wishlist);
   return (
     <>
-      <ToastContainer />
       {wishlist.length === 0 ? (
         <h1>You haven't added anything to wishlist Yet</h1>
       ) : (

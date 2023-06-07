@@ -47,7 +47,6 @@ export const LoginCard = () => {
                   email: "adarshbalika@gmail.com",
                   password: "adarshbalika",
                 });
-                loginHandler();
               }}
             >
               Set Test Details

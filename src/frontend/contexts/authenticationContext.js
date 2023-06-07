@@ -36,9 +36,8 @@ export const AuthProvider = ({ children }) => {
 
       const { encodedToken, foundUser } = await response.json();
       localStorage.setItem("token", encodedToken);
-      // console.log(foundUser);
-      dispatch({ type: "get_user_details", payLoad: foundUser });
       localStorage.setItem("userDetails", JSON.stringify(foundUser));
+      dispatch({ type: "get_user_details", payLoad: foundUser });
     } catch (e) {
       console.log(e);
     }

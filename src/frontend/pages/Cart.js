@@ -10,7 +10,6 @@ export const Cart = () => {
 
   return (
     <>
-      <ToastContainer />
       {cart.length === 0 ? (
         <h1>You haven't added anything in card yet.</h1>
       ) : (

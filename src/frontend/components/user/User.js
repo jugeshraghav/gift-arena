@@ -17,6 +17,7 @@ export const User = () => {
   const { address, addDataDispatch } = useContext(DataContext);
   // console.log(user);
   const user = JSON.parse(localStorage.getItem("userDetails"));
+  console.log(user);
   // console.log(JSON.parse(user2));
   const { firstName, lastName, email } = user;
   // console.log(address);

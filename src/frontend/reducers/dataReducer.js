@@ -34,11 +34,9 @@ export const dataReducer = (state, action) => {
     case "get_all_products":
       return { ...state, allProducts: [...payLoad] };
     case "get_user_details":
-      console.log(payLoad.address);
       return {
         ...state,
         user: { ...state.user, ...payLoad },
-        address: [...payLoad.address],
       };
 
     case "get_categories":

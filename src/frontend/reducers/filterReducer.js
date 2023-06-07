@@ -1,4 +1,5 @@
 export const initial_state_filters = {
+  search_text: "",
   category_from_filter: [],
   price_range_filter: "",
   sort_string_from_filter: "",
@@ -7,8 +8,15 @@ export const initial_state_filters = {
 
 export const filterReducer = (state, action) => {
   const { type, payLoad } = action;
+  // console.log(type, payLoad);
   switch (type) {
+    case "filter_by_search":
+      return {
+        ...state,
+        search_text: payLoad,
+      };
     case "filter_by_category":
+      // console.log(payLoad);
       return {
         ...state,
         category_from_filter: state.category_from_filter.includes(payLoad)
@@ -26,6 +34,16 @@ export const filterReducer = (state, action) => {
 
     case "filter_by_rating":
       return { ...state, rating_from_filter: payLoad };
+
+    case "clear_filters":
+      return {
+        ...state,
+        rating_from_filter: "",
+        sort_string_from_filter: "",
+        price_range_filter: "",
+        category_from_filter: [],
+        search_text: "",
+      };
 
     default:
       return state;

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/transparent-bg-logo.png";
 // import LogoBlack from "../../assets/black-log.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,7 +12,15 @@ import {
 import "./navbar.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authenticationContext";
+import { FilterContext } from "../../contexts/filterContext";
 export const Navbar = () => {
+  const { filterDispatch } = useContext(FilterContext);
+  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
+  const searchProductHandler = (searchText) => {
+    filterDispatch({ type: "filter_by_search", payLoad: searchText });
+    navigate("/products");
+  };
   const getStyle = ({ isActive }) => {
     return {
       color: isActive ? "lightgreen" : "white",
@@ -35,8 +43,9 @@ export const Navbar = () => {
           <input
             type="text"
             placeholder="search flowers, cakes, gifts etc..."
+            onChange={(e) => setSearchText(e.target.value)}
           ></input>
-          <button>
+          <button onClick={() => searchProductHandler(searchText)}>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </div>

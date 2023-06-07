@@ -9,7 +9,7 @@ export const products = [
   {
     _id: "1",
     name: "Chocolate Truffle Cake",
-    price: 25.99,
+    price: 250,
     imageUrl:
       "https://images.pexels.com/photos/4109998/pexels-photo-4109998.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     altText: "Chocolate Truffle Cake",
@@ -21,7 +21,7 @@ export const products = [
   {
     _id: "2",
     name: "Vanilla Celebration Cake",
-    price: 29.99,
+    price: 300,
     imageUrl:
       "https://images.pexels.com/photos/1721932/pexels-photo-1721932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     altText: "Vanilla Celebration Cake",
@@ -33,7 +33,7 @@ export const products = [
   {
     _id: "3",
     name: "Red Velvet Cupcakes",
-    price: 19.99,
+    price: 200,
     imageUrl:
       "https://images.pexels.com/photos/6375498/pexels-photo-6375498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     altText: "Red Velvet Cupcakes",
@@ -45,7 +45,7 @@ export const products = [
   {
     _id: "4",
     name: "Rainbow Cake",
-    price: 49.99,
+    price: 150,
     imageUrl:
       "https://images.pexels.com/photos/11753321/pexels-photo-11753321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     altText: "Rainbow Cake",
@@ -57,7 +57,7 @@ export const products = [
   {
     _id: "5",
     name: "Black Forest Cake",
-    price: 34.99,
+    price: 250,
     imageUrl:
       "https://images.pexels.com/photos/6341564/pexels-photo-6341564.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Black Forest Cake",
@@ -69,7 +69,7 @@ export const products = [
   {
     _id: "6",
     name: "Cheesecake Sampler",
-    price: 39.99,
+    price: 500,
     imageUrl:
       "https://images.pexels.com/photos/15419532/pexels-photo-15419532/free-photo-of-a-cheesecake-with-caramel-on-top.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Cheesecake Sampler",
@@ -81,7 +81,7 @@ export const products = [
   {
     _id: "7",
     name: "Carrot Cake",
-    price: 24.99,
+    price: 450,
     imageUrl:
       "https://images.pexels.com/photos/2612373/pexels-photo-2612373.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Carrot Cake",
@@ -93,7 +93,7 @@ export const products = [
   {
     _id: "8",
     name: "Triple Chocolate Cake",
-    price: 39.99,
+    price: 350,
     imageUrl:
       "https://images.pexels.com/photos/15445807/pexels-photo-15445807/free-photo-of-close-up-of-a-chocolate-cake.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Triple Chocolate Cake",
@@ -105,7 +105,7 @@ export const products = [
   {
     _id: "9",
     name: "Cheesecake Brownies",
-    price: 19.99,
+    price: 160,
     imageUrl:
       "https://images.pexels.com/photos/4078187/pexels-photo-4078187.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Cheesecake Brownies",
@@ -117,7 +117,7 @@ export const products = [
   {
     _id: "10",
     name: "Classic Chocolate Cake",
-    price: 39.99,
+    price: 260,
     imageUrl:
       "https://images.pexels.com/photos/15464829/pexels-photo-15464829/free-photo-of-close-up-of-chocolate-cake.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     altText: "Classic Chocolate Cake",
@@ -129,7 +129,7 @@ export const products = [
   {
     _id: "11",
     name: "Strawberry Shortcake",
-    price: 29.99,
+    price: 490,
     imageUrl:
       "https://images.pexels.com/photos/15471971/pexels-photo-15471971/free-photo-of-white-cream-with-strawberries.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Strawberry Shortcake",
@@ -141,7 +141,7 @@ export const products = [
   {
     _id: "13",
     name: "Red Velvet Cake",
-    price: 34.99,
+    price: 500,
     imageUrl:
       "https://images.pexels.com/photos/806363/pexels-photo-806363.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Red Velvet Cake",
@@ -153,7 +153,7 @@ export const products = [
   {
     _id: "13",
     name: "Vanilla Pound Cake",
-    price: 24.99,
+    price: 190,
     imageUrl:
       "https://images.pexels.com/photos/5610353/pexels-photo-5610353.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Vanilla Pound Cake",
@@ -165,7 +165,7 @@ export const products = [
   {
     _id: "14",
     name: "Classic Vanilla Cake",
-    price: 49.99,
+    price: 400,
     imageUrl:
       "https://images.pexels.com/photos/1038711/pexels-photo-1038711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     altText: "Classic Vanilla Cake",
@@ -177,7 +177,7 @@ export const products = [
   {
     _id: "15",
     name: "Chocolate Fudge Cake",
-    price: 39.99,
+    price: 300,
     imageUrl:
       "https://images.pexels.com/photos/8732739/pexels-photo-8732739.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Chocolate Fudge Cake",
@@ -189,7 +189,7 @@ export const products = [
   {
     _id: "16",
     name: "Lemon Poppy Seed Cake",
-    price: 29.99,
+    price: 150,
     imageUrl:
       "https://images.pexels.com/photos/264939/pexels-photo-264939.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Lemon Poppy Seed Cake",
@@ -201,7 +201,7 @@ export const products = [
   {
     _id: "17",
     name: "Marble Pound Cake",
-    price: 34.99,
+    price: 340,
     imageUrl:
       "https://images.pexels.com/photos/7235675/pexels-photo-7235675.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Marble Pound Cake",
@@ -213,7 +213,7 @@ export const products = [
   {
     _id: "18",
     name: "Salted Caramel Cake",
-    price: 39.99,
+    price: 420,
     imageUrl:
       "https://images.pexels.com/photos/15772706/pexels-photo-15772706/free-photo-of-close-up-of-cake-with-decoration.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Salted Caramel Cake",
@@ -225,7 +225,7 @@ export const products = [
   {
     _id: "19",
     name: "Mango Mousse Cake",
-    price: 49.99,
+    price: 360,
     imageUrl:
       "https://images.pexels.com/photos/140831/pexels-photo-140831.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Mango Mousse Cake",
@@ -237,7 +237,7 @@ export const products = [
   {
     _id: "20",
     name: "Raspberry Chocolate Cake",
-    price: 34.99,
+    price: 280,
     imageUrl:
       "https://images.pexels.com/photos/6133334/pexels-photo-6133334.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Raspberry Chocolate Cake",
@@ -249,7 +249,7 @@ export const products = [
   {
     _id: "21",
     name: "Coconut Cream Cake",
-    price: 29.99,
+    price: 500,
     imageUrl:
       "https://images.pexels.com/photos/3992134/pexels-photo-3992134.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Coconut Cream Cake",
@@ -262,7 +262,7 @@ export const products = [
   {
     _id: "22",
     name: "Money Tree",
-    price: 29.99,
+    price: 300,
     imageUrl:
       "https://www.fnp.com/images/pr/l/v20230404060442/money-plant-in-colourfull-rajwada-printed-pot-hand-delivery_3.jpg",
     altText: "Money Tree",
@@ -274,7 +274,7 @@ export const products = [
   {
     _id: "23",
     name: "Jade Plant",
-    price: 24.99,
+    price: 240,
     imageUrl:
       "https://www.fnp.com/images/pr/l/v20230406050253/jade-plant-in-vibrant-floral-pot_1.jpg",
     altText: "Jade Plant",
@@ -286,7 +286,7 @@ export const products = [
   {
     _id: "24",
     name: "Snake Plant",
-    price: 19.99,
+    price: 190,
     imageUrl:
       "https://www.fnp.com/images/pr/l/v20230328085218/greeny-sansevieria-snake-plant_1.jpg",
     altText: "Snake Plant",
@@ -298,7 +298,7 @@ export const products = [
   {
     _id: "25",
     name: "Bonsai Plant",
-    price: 34.99,
+    price: 340,
     imageUrl:
       "https://www.fnp.com/images/pr/l/v20180804103038/desert-rose-adenium-plant_1.jpg",
     altText: "Bonsai",
@@ -310,7 +310,7 @@ export const products = [
   {
     _id: "26",
     name: "Bamboo Palm",
-    price: 27.99,
+    price: 150,
     imageUrl:
       "https://www.fnp.com/images/pr/l/v20211109104020/bringing-good-luck-standard_1.jpg",
     altText: "Bamboo Palm",
@@ -323,7 +323,7 @@ export const products = [
   {
     _id: "27",
     name: "Roses",
-    price: 12.99,
+    price: 100,
     imageUrl:
       "https://www.fnp.com/images/pr/l/v20190122180449/mixed-roses-romantic-bunch_1.jpg",
     altText: "Roses",
@@ -335,7 +335,7 @@ export const products = [
   {
     _id: "28",
     name: "Lilies",
-    price: 9.99,
+    price: 160,
     imageUrl:
       "https://www.fnp.com/images/pr/l/v20221006132320/blooming-asiatic-lilies-in-black-ribbon-tied-vase_1.jpg",
     altText: "Lilies",
@@ -347,7 +347,7 @@ export const products = [
   {
     _id: "29",
     name: "Daisies",
-    price: 7.99,
+    price: 200,
     imageUrl:
       "https://www.fnp.com/images/pr/l/v20210629103556/magic-of-love-floral-arrangement_1.jpg",
     altText: "Daisies",
@@ -359,7 +359,7 @@ export const products = [
   {
     _id: "30",
     name: "Orchids",
-    price: 14.99,
+    price: 140,
     imageUrl:
       "https://www.fnp.com/images/pr/l/v20220706124748/enchanting-orchids-bouquet_1.jpg",
     altText: "Orchids",
@@ -371,7 +371,7 @@ export const products = [
   {
     _id: "31",
     name: "Sunflowers",
-    price: 11.99,
+    price: 320,
     imageUrl:
       "https://images.pexels.com/photos/9168324/pexels-photo-9168324.jpeg?auto=compress&cs=tinysrgb&w=600",
     altText: "Sunflowers",

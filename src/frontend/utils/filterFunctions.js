@@ -1,3 +1,10 @@
+const filterBySearch = (products, appliedFilters) => {
+  return appliedFilters.search_text.length > 0
+    ? products.filter(({ name }) =>
+        name.toLowerCase().includes(appliedFilters.search_text.toLowerCase())
+      )
+    : products;
+};
 const filterByCategories = (products, appliedFilters) => {
   return appliedFilters.category_from_filter.length > 0
     ? products.filter(({ category }) =>
@@ -25,14 +32,16 @@ const filterByRating = (products, appliedFilters) => {
 };
 
 const filterByPriceRange = (products, appliedFilters) => {
-  return appliedFilters.rating_from_filter > 0
+  return appliedFilters.price_range_filter > 0
     ? products.filter(
-        ({ rating }) => rating > Number(appliedFilters.rating_from_filter)
+        ({ price }) =>
+          price < Number(appliedFilters.price_range_filter) && price > 100
       )
     : products;
 };
 export const getFilteredProducts = (products, appliedFilters) => {
   const filterFunctions = [
+    filterBySearch,
     filterByCategories,
     sortByPrice,
     filterByRating,

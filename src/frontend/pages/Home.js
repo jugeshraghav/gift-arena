@@ -3,10 +3,19 @@ import { DataContext } from "../contexts/dataContext";
 import { hero_img } from "../assets/links";
 
 import "../../App.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { FilterContext } from "../contexts/filterContext";
 
 export const Home = () => {
   const { cakes, flowers, plants, categories } = useContext(DataContext);
+  const { appliedFilters, filterDispatch } = useContext(FilterContext);
+  const navigate = useNavigate();
+  const categoryHandler = (categoryName) => {
+    // console.log("selected category", categoryName);
+    filterDispatch({ type: "clear_filters" });
+    filterDispatch({ type: "filter_by_category", payLoad: categoryName });
+    navigate("/products");
+  };
   return (
     <>
       <div className="home">
@@ -28,8 +37,13 @@ export const Home = () => {
           </p>
           <div className="home-categories">
             {categories.map(({ _id, categoryName, image }) => (
-              <div className="category_card" key={_id}>
+              <div
+                className="category_card"
+                key={_id}
+                onClick={() => categoryHandler(categoryName)}
+              >
                 <img src={image}></img>
+
                 <p>{categoryName}</p>
               </div>
             ))}
@@ -39,13 +53,15 @@ export const Home = () => {
         <div className="home-items-list-container">
           <div className="home-items-list-content">
             <p>Tempting Cakes</p>
-            <button>View All</button>
+            <button onClick={() => categoryHandler("Cake")}>View All</button>
           </div>
 
           <div className="home-items-list">
             {cakes.slice(0, 4).map(({ name, imageUrl, altText }) => (
               <div className="item-card">
-                <img src={imageUrl} alt={altText} />
+                <Link>
+                  <img src={imageUrl} alt={altText} />
+                </Link>
                 <p>{name}</p>
               </div>
             ))}
@@ -55,7 +71,7 @@ export const Home = () => {
         <div className="home-items-list-container">
           <div className="home-items-list-content">
             <p>Indoor Plants</p>
-            <button>View All</button>
+            <button onClick={() => categoryHandler("Plant")}>View All</button>
           </div>
           <div className="home-items-list">
             {plants.slice(0, 4).map(({ name, imageUrl, altText }) => (
@@ -70,7 +86,7 @@ export const Home = () => {
         <div className="home-items-list-container">
           <div className="home-items-list-content">
             <p>Elegant Flowers</p>
-            <button>View All</button>
+            <button onClick={() => categoryHandler("Flower")}>View All</button>
           </div>
           <div className="home-items-list">
             {flowers.slice(0, 4).map(({ name, imageUrl, altText }) => (

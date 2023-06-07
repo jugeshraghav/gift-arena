@@ -1,11 +1,8 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 .App {
   text-align: center;
-  /* font-family: "Righteous", cursive; */
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
@@ -13,7 +10,7 @@
 }
 
 :root {
-  --primary-color: rgba(29, 54, 111, 1);
+  --primary-color: rgba(29, 54, 111, 0.5);
   --secondary-color: rgb(22, 197, 129);
   --heading-desktop: 2rem;
   --heading-tablet: 1.5rem;
@@ -177,6 +174,51 @@
 .products-list a {
   width: 100%;
   height: 60%;
+}
+
+/************Product Details*********/
+.product-detail-main-container {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+.product-detail-card-container {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 4rem;
+  width: 600px;
+  height: 350px;
+  border: 1px solid var(--primary-color);
+  padding: 1rem;
+}
+.product-detail-card-image-container {
+  width: 200px;
+  height: 100%;
+}
+.product-detail-card-image-container img {
+  height: 100%;
+}
+.product-detail-card-content-container {
+  text-align: left;
+}
+.product-detail-card-content-container div {
+  display: flex;
+  /* justify-content: space-around; */
+  gap: 0.5rem;
+  align-items: center;
+}
+.product-detail-button {
+  color: white;
+  padding: 0.5rem;
+  background-color: var(--primary-color);
+  border: none;
+  widht: 100%;
+}
+.product-detail-button:hover {
+  color: var(--primary-color);
+  background-color: white;
+  border: 1px solid var(--primary-color);
 }
 
 /*********Cart********/

@@ -58,64 +58,15 @@ export const User = () => {
                 <span className="user-detail-heading">Email :</span>{" "}
                 <span>{email}</span>
               </div>
-              <button onClick={() => logoutHandler()}>Logout</button>
+              <button
+                className="user-card-button"
+                onClick={() => logoutHandler()}
+              >
+                Logout
+              </button>
             </div>
           ) : (
             <AddressCard />
-            // <div className="user-address-container">
-            //   <div className="user-address-header">
-            //     <p className="user-address-header-title">My Addresses</p>
-            //     <button onClick={() => setShowAddressModal(true)}>
-            //       Add New Address
-            //     </button>
-            //   </div>
-            //   {showAddressModal && (
-            //     <AddressModal
-            //       addressId={addressToBeEdited}
-            //       setShowAddressModal={setShowAddressModal}
-            //       newAddress={newAddress}
-            //       setNewAddress={setNewAddress}
-            //     />
-            //   )}
-
-            //   {address ? (
-            //     address.map((addressItem) => (
-            //       <div className="user-address">
-            //         <p>{addressItem.name}</p>
-            //         <p>{addressItem.area}</p>
-            //         <p>
-            //           {addressItem.city}, {addressItem.state},{" "}
-            //           {addressItem.pincode}
-            //         </p>
-            //         <p>{addressItem.phoneNumber}</p>
-            //         <div className="user-address-button-container">
-            //           <button
-            //             onClick={() =>
-            //               editAddressHandler(
-            //                 addressItem._id,
-            //                 addressItem,
-            //                 setNewAddress,
-            //                 setAddressToBeEdited,
-            //                 setShowAddressModal
-            //               )
-            //             }
-            //           >
-            //             Edit
-            //           </button>
-            //           <button
-            //             onClick={() =>
-            //               deleteAddressHandler(addressItem._id, addDataDispatch)
-            //             }
-            //           >
-            //             Delete
-            //           </button>
-            //         </div>
-            //       </div>
-            //     ))
-            //   ) : (
-            //     <h1>Oops! no Address Found</h1>
-            //   )}
-            // </div>
           )}
         </div>
       </div>

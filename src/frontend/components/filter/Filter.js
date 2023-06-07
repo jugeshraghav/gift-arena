@@ -41,7 +41,7 @@ export const Filter = () => {
         >
           <h4>Filters</h4>
           <button
-            className="primary-button"
+            style={{ border: "1px solid", padding: "0.2rem 0.4rem" }}
             onClick={() => clearFilterHandler()}
           >
             Clear

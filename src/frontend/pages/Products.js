@@ -5,6 +5,7 @@ import { Filter } from "../components/filter/Filter";
 import { getFilteredProducts } from "../utils/filterFunctions";
 import { FilterContext } from "../contexts/filterContext";
 import { ProductCard } from "../components/productCard/ProductCard";
+import { ToastContainer } from "react-toastify";
 export const Products = () => {
   const { allProducts } = useContext(DataContext);
   const { appliedFilters } = useContext(FilterContext);
@@ -13,6 +14,7 @@ export const Products = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className="products-main">
         <div className="product-filters">
           <Filter />
@@ -20,7 +22,7 @@ export const Products = () => {
         <div className="products-list-container">
           <div className="product-list-header">
             <button className="show-filters-button">Filters</button>
-            <h2>Showing all Products</h2>
+            <p>Showing all Products({allProducts.length})</p>
           </div>
           <div className="products-list">
             {filteredProducts.map((product) => (

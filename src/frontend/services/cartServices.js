@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 const encodedToken = localStorage.getItem("token");
 
 export const addToCartHandler = async (
@@ -16,10 +17,10 @@ export const addToCartHandler = async (
           authorization: encodedToken,
         },
       });
-      // getCartItems();
+
       const cartObj = await response.json();
       dispatch({ type: "add_to_cart", payLoad: cartObj?.cart });
-      console.log(await response.json());
+      toast.success("Item added to Cart");
     } catch (e) {
       console.log(e);
     }
@@ -36,11 +37,11 @@ export const removeFromCartHandler = async (productId, dispatch) => {
       method: "DELETE",
       headers: { authorization: encodedToken },
     });
-    // getCartItems();
 
     const cartObj = await response.json();
 
     dispatch({ type: "remove_from_cart", payLoad: cartObj?.cart });
+    toast.info("Item removed from Cart");
   } catch (e) {
     console.log(e);
   }

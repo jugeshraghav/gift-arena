@@ -44,7 +44,7 @@
   padding: 0.2rem 0.4rem;
 }
 
-.product-card button:last-child {
+.product-card-button {
   width: 100%;
   background-color: var(--primary-color);
   color: white;
@@ -95,7 +95,7 @@
     padding: 0.2rem 0.4rem;
   }
 
-  .product-card button:last-child {
+  .product-card-button {
     padding: 0.5rem;
   }
 

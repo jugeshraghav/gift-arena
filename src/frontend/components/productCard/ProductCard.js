@@ -10,6 +10,7 @@ import {
   addToWishlistHandler,
 } from "../../services/wishlistServices";
 import { dataReducer, initial_state } from "../../reducers/dataReducer";
+import { ToastContainer } from "react-toastify";
 
 export const ProductCard = (props) => {
   // const [state, dispatch] = useReducer(dataReducer, initial_state);
@@ -24,6 +25,7 @@ export const ProductCard = (props) => {
   const location = useLocation();
   return (
     <>
+      <ToastContainer />
       <div className="product-card">
         <NavLink to={`/product-detail/${_id}`}>
           <img src={imageUrl} alt={altText} />
@@ -71,11 +73,18 @@ export const ProductCard = (props) => {
         {bestseller && <span className="bestseller-strip">Bestseller</span>}
         {/* {console.log(isInCart(cart, _id))} */}
         {isProductInCart ? (
-          <NavLink to="/cart">
-            <button>Go to Cart</button>
-          </NavLink>
+          <button className="product-card-button">
+            {" "}
+            <NavLink
+              to="/cart"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Go to Cart{" "}
+            </NavLink>
+          </button>
         ) : (
           <button
+            className="product-card-button"
             onClick={() =>
               addToCartHandler(
                 props.cardDetails,

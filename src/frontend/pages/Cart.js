@@ -3,12 +3,14 @@ import { DataContext } from "../contexts/dataContext";
 import { CartCard } from "../components/cartCard/CartCard";
 import { Checkout } from "../components/checkoutCard/Checkout";
 import "../../App.css";
+import { ToastContainer } from "react-toastify";
 
 export const Cart = () => {
   const { cart } = useContext(DataContext);
 
   return (
     <>
+      <ToastContainer />
       {cart.length === 0 ? (
         <h1>You haven't added anything in card yet.</h1>
       ) : (

@@ -2,12 +2,14 @@ import { useContext } from "react";
 import { DataContext } from "../contexts/dataContext";
 import { ProductCard } from "../components/productCard/ProductCard";
 import "../../App.css";
+import { ToastContainer } from "react-toastify";
 
 export const Whishlist = () => {
   const { wishlist } = useContext(DataContext);
   console.log(wishlist);
   return (
     <>
+      <ToastContainer />
       {wishlist.length === 0 ? (
         <h1>You haven't added anything to wishlist Yet</h1>
       ) : (

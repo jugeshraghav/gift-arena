@@ -12,6 +12,7 @@ import {
   addToWishlistHandler,
 } from "../../services/wishlistServices";
 import { useLocation, useNavigate } from "react-router";
+import { ToastContainer } from "react-toastify";
 export const CartCard = ({ product }) => {
   const { _id, name, price, imageUrl, altText, qty, rating, bestseller } =
     product;
@@ -27,6 +28,7 @@ export const CartCard = ({ product }) => {
 
   return (
     <>
+      <ToastContainer />
       <div className="cart-card-container">
         <img src={imageUrl} alt={altText} />
         <div className="cart-card-content">

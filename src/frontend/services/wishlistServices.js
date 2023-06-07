@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 const encodedToken = localStorage.getItem("token");
 
 export const addToWishlistHandler = async (
@@ -18,10 +19,12 @@ export const addToWishlistHandler = async (
       });
       const wishlistObj = await response.json();
       dispatch({ type: "add_to_wishlist", payLoad: wishlistObj?.wishlist });
+      toast.success("Item added to Wishlist");
     } catch (e) {
       console.log(e);
     }
   } else {
+    toast.warning("Please login first");
     navigate("/login", { state: { from: location?.pathname } });
   }
 };
@@ -35,7 +38,7 @@ export const removeFromWishlistHandler = async (productId, dispatch) => {
     });
     const wishlistObj = await response.json();
     dispatch({ type: "remove_from_wishlist", payLoad: wishlistObj?.wishlist });
-    console.log(await response.json());
+    toast.info("Item removed from Wishlist");
   } catch (e) {
     console.log(e);
   }

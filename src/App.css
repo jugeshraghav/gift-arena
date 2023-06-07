@@ -246,7 +246,10 @@
   margin: 2rem 0;
   padding: 5rem;
 }
-
+.payment-page-container p {
+  margin: 0;
+  padding: 0;
+}
 .payment-card {
   width: 80%;
   border: 1px solid black;

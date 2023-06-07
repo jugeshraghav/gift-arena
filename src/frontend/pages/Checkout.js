@@ -38,8 +38,6 @@ export const Checkout = () => {
   const paymentHandler = () => {
     if (selectedAddress) {
       addDataDispatch({ type: "payment" });
-
-      navigate("/products");
       toast.success("Order Placed");
     } else {
       toast.warning("can't proceed, add address");

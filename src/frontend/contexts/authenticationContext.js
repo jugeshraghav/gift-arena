@@ -44,9 +44,13 @@ export const AuthProvider = ({ children }) => {
   };
 
   const loginHandler = async () => {
-    await getUSerLoginToken();
+    if (location?.state?.from !== null) {
+      await getUSerLoginToken();
 
-    navigate(location?.state?.from);
+      navigate(location?.state?.from);
+    } else {
+      navigate("/home");
+    }
   };
 
   const logoutHandler = () => {

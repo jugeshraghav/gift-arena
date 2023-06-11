@@ -10,6 +10,7 @@ import {
   editAddressHandler,
 } from "../../services/addressServices";
 import { AddressCard } from "../addressCard/AddressCard";
+import { ToastContainer } from "react-toastify";
 export const User = () => {
   const [state, dispatch] = useReducer(dataReducer, initial_state);
   const [viewProfile, setViewProfile] = useState(true);
@@ -38,6 +39,7 @@ export const User = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className="user-details-container">
         <div className="user-details">
           <p className="user-title">

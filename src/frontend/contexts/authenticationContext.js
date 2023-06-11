@@ -1,6 +1,7 @@
 import { createContext, useReducer, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { dataReducer, initial_state } from "../reducers/dataReducer";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
@@ -46,8 +47,8 @@ export const AuthProvider = ({ children }) => {
   const loginHandler = async () => {
     if (location?.state?.from !== null) {
       await getUSerLoginToken();
-
       navigate(location?.state?.from);
+      toast.success("Successfully Logged in");
     } else {
       navigate("/home");
     }

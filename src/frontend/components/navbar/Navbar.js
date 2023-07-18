@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/transparent-bg-logo.png";
-// import LogoBlack from "../../assets/black-log.png"
+import LogoBlack from "../../assets/black-log.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -36,7 +36,7 @@ export const Navbar = () => {
       <div className="nav-main">
         <div className="nav-logo">
           <NavLink to="/">
-            <img src={Logo} alt="gift arena"></img>
+            <img src={LogoBlack} alt="gift arena"></img>
           </NavLink>
         </div>
         <div className="nav-search">

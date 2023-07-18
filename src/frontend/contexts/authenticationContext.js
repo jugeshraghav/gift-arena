@@ -2,6 +2,7 @@ import { createContext, useReducer, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { dataReducer, initial_state } from "../reducers/dataReducer";
 import { toast } from "react-toastify";
+import { loginService, signUpService } from "../services/authServices";
 
 export const AuthContext = createContext();
 
@@ -24,29 +25,15 @@ export const AuthProvider = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const getUSerLoginToken = async () => {
-    const creds = {
-      email: userLoginDetails.email,
-      password: userLoginDetails.password,
-    };
-    try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        body: JSON.stringify(creds),
-      });
-
-      const { encodedToken, foundUser } = await response.json();
-      localStorage.setItem("token", encodedToken);
-      localStorage.setItem("userDetails", JSON.stringify(foundUser));
-      dispatch({ type: "get_user_details", payLoad: foundUser });
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   const loginHandler = async () => {
     if (location?.state?.from !== null) {
-      await getUSerLoginToken();
+      const response = await loginService(
+        userLoginDetails?.email,
+        userLoginDetails?.password
+      );
+      const user = await response.json();
+      localStorage.setItem("token", user?.encodedToken);
+      localStorage.setItem("userDetails", JSON.stringify(user?.foundUser));
       navigate(location?.state?.from);
       toast.success("Successfully Logged in");
     } else {
@@ -60,30 +47,14 @@ export const AuthProvider = ({ children }) => {
     navigate("/login");
   };
 
-  const getUserSignUpToken = async () => {
-    try {
-      const response = await fetch("/api/auth/signup", {
-        method: "POST",
-        body: JSON.stringify(signUpDetails),
-      });
-      const data = await response.json();
-
-      localStorage.setItem("token", data.encodedToken);
-      dispatch({ type: "get_user_details", payLoad: data?.createdUser });
-      localStorage.setItem("userDetails", JSON.stringify(data.createdUser));
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const encodedToken = localStorage.getItem("token");
-
-  const signUpHandler = () => {
-    getUserSignUpToken();
+  const signUpHandler = async () => {
+    const response = await signUpService(signUpDetails);
+    const user = await response.json();
+    localStorage.setItem("token", user?.encodedToken);
+    localStorage.setItem("userDetails", JSON.stringify(user?.createdUser));
     navigate("/");
   };
 
-  console.log("state from auth con", state);
   return (
     <AuthContext.Provider
       value={{
@@ -91,7 +62,6 @@ export const AuthProvider = ({ children }) => {
         logoutHandler,
         userLoginDetails,
         setUserLoginDetails,
-        encodedToken,
         signUpDetails,
         signUpHandler,
         setSignUpDetails,

@@ -25,7 +25,6 @@ export const ProductCard = (props) => {
   const location = useLocation();
   return (
     <>
-      <ToastContainer />
       <div className="product-card">
         <NavLink to={`/product-detail/${_id}`}>
           <img src={imageUrl} alt={altText} />

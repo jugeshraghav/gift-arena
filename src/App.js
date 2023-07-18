@@ -14,10 +14,12 @@ import { User } from "./frontend/components/user/User";
 
 import "react-toastify/dist/ReactToastify.css";
 import { Checkout } from "./frontend/pages/Checkout";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Root />}>
           <Route path="/" element={<Home />} />

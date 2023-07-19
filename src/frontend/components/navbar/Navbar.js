@@ -1,13 +1,17 @@
+import { ImGift } from "react-icons/im";
+import { AiOutlineUser } from "react-icons/ai";
+import { MdExplore } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router-dom";
-import Logo from "../../assets/transparent-bg-logo.png";
-import LogoBlack from "../../assets/black-log.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUser,
   faMagnifyingGlass,
   faBars,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
+import { MdOutlineExplore } from "react-icons/md";
 
 import "./navbar.css";
 import { useContext, useState } from "react";
@@ -23,77 +27,71 @@ export const Navbar = () => {
   };
   const getStyle = ({ isActive }) => {
     return {
-      color: isActive ? "lightgreen" : "white",
       textDecoration: "none",
     };
   };
 
   const { loginHandler } = useContext(AuthContext);
-  const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
 
   return (
     <>
       <div className="nav-main">
-        <div className="nav-logo">
-          <NavLink to="/">
-            <img src={LogoBlack} alt="gift arena"></img>
+        <div className="nav-primary">
+          <NavLink to="/" style={getStyle}>
+            <div className="nav-logo-container">
+              <span className="nav-logo-img">
+                <ImGift />
+              </span>
+              <span className="nav-logo">Gift Arena</span>
+            </div>
           </NavLink>
-        </div>
-        <div className="nav-search">
-          <input
-            type="text"
-            placeholder="search flowers, cakes, gifts etc..."
-            onChange={(e) => setSearchText(e.target.value)}
-          ></input>
-          <button onClick={() => searchProductHandler(searchText)}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
-        </div>
 
-        <div className="nav-links">
-          <NavLink to="/products" style={getStyle}>
-            Products
-          </NavLink>
-          <NavLink to="/wishlist" style={getStyle}>
-            Wishlist
-          </NavLink>
-          <NavLink to="/cart" style={getStyle}>
-            Cart
-          </NavLink>
-          <NavLink to="/login" style={getStyle}>
-            <FontAwesomeIcon icon={faUser} />
-          </NavLink>
-          {/* <NavLink to="/mockman">Mockman</NavLink> */}
-        </div>
-        <div
-          className="hamburger-icon"
-          onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}
-        >
-          {showHamburgerMenu ? (
-            <FontAwesomeIcon icon={faXmark} />
-          ) : (
-            <FontAwesomeIcon icon={faBars} />
-          )}
-        </div>
-      </div>
-      {showHamburgerMenu && (
-        <div className="hamburger-menu">
-          <div className="hamburger-menu-links">
+          <div className="nav-search">
+            <input
+              type="text"
+              placeholder="search flowers, cakes, gifts etc..."
+              onChange={(e) => setSearchText(e.target.value)}
+            ></input>
+            <button onClick={() => searchProductHandler(searchText)}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
+          </div>
+          <div className="nav-links">
             <NavLink to="/products" style={getStyle}>
-              Products
+              <MdOutlineExplore className="nav-link" />
             </NavLink>
             <NavLink to="/wishlist" style={getStyle}>
-              Wishlist
+              <AiOutlineHeart className="nav-link" />
             </NavLink>
             <NavLink to="/cart" style={getStyle}>
-              Cart
+              <AiOutlineShoppingCart className="nav-link" />
             </NavLink>
             <NavLink to="/login" style={getStyle}>
-              <FontAwesomeIcon icon={faUser} />
+              <AiOutlineUser className="nav-link" />
             </NavLink>
+            {/* <NavLink to="/mockman">Mockman</NavLink> */}
           </div>
         </div>
-      )}
+        {/* <div className="secondary-navbar">
+          <div className="nav-links-secondary-navbar">
+            <NavLink to="/" style={getStyle}>
+              <AiOutlineHome />
+            </NavLink>
+            <NavLink to="/products" style={getStyle}>
+              <MdExplore />
+            </NavLink>
+            <NavLink to="/wishlist" style={getStyle}>
+              <AiOutlineHeart />
+            </NavLink>
+            <NavLink to="/cart" style={getStyle}>
+              <AiOutlineShoppingCart />
+            </NavLink>
+            <NavLink to="/login" style={getStyle}>
+              <AiOutlineUser />
+            </NavLink>
+          </div>
+        </div> */}
+      </div>
     </>
   );
 };

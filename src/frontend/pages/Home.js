@@ -20,18 +20,50 @@ export const Home = () => {
     <>
       <div className="home">
         <div className="hero">
-          <div className="hero-image-container">
-            <img src={hero_img} alt="hero-display" />
-          </div>
-
           <div className="hero-content">
-            <h1>Get gifts for every occassion</h1>
+            <p className="hero-content-text">Get gifts for every occassion</p>
             <NavLink to="/products">
-              <button>Explore</button>
+              <button className="primary-button">Explore</button>
             </NavLink>
           </div>
+          {/* <div className="hero-image-container">
+            <div className="hero-image-box image-box-1">
+              <img
+                src="https://cdn.pixabay.com/photo/2018/05/26/23/13/bouquet-3432452_640.jpg"
+                alt="hell"
+              />
+            </div>
+            <div className="hero-image-box image-box-2">
+              {" "}
+              <img
+                src="https://plus.unsplash.com/premium_photo-1674068280156-138373e16bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHJlc2VudHxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                alt="hell"
+              />
+            </div>
+            <div className="hero-image-box image-box-3">
+              {" "}
+              <img
+                src="https://img.freepik.com/free-photo/black-gift-box-with-red-ribbon-roses-it_1340-41395.jpg?size=626&ext=jpg&ga=GA1.2.1704512721.1672676438&semt=ais_ai_generated"
+                alt="hell"
+              />
+            </div>
+            <div className="hero-image-box image-box-4">
+              {" "}
+              <img
+                src="https://plus.unsplash.com/premium_photo-1674068280156-138373e16bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHJlc2VudHxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                alt="hell"
+              />
+            </div>
+            <div className="hero-image-box image-box-5">
+              {" "}
+              <img
+                src="https://plus.unsplash.com/premium_photo-1674068280156-138373e16bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHJlc2VudHxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                alt="hell"
+              />
+            </div>
+          </div> */}
         </div>
-        <div className="home-categories-container">
+        {/* <div className="home-categories-container">
           <p className="home-categories-heading">
             Select from given categories
           </p>
@@ -48,9 +80,9 @@ export const Home = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
-        <div className="home-items-list-container">
+        {/* <div className="home-items-list-container">
           <div className="home-items-list-content">
             <p>Tempting Cakes</p>
             <button onClick={() => categoryHandler("Cake")}>View All</button>
@@ -66,9 +98,9 @@ export const Home = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
-        <div className="home-items-list-container">
+        {/* <div className="home-items-list-container">
           <div className="home-items-list-content">
             <p>Indoor Plants</p>
             <button onClick={() => categoryHandler("Plant")}>View All</button>
@@ -81,9 +113,9 @@ export const Home = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
-        <div className="home-items-list-container">
+        {/* <div className="home-items-list-container">
           <div className="home-items-list-content">
             <p>Elegant Flowers</p>
             <button onClick={() => categoryHandler("Flower")}>View All</button>
@@ -96,7 +128,7 @@ export const Home = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

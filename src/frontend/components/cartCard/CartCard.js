@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { isInCart, isInWishlist } from "../../utils/productFunctions";
-import "./cartCard.css";
-import { FaStar } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router";
 import { DataContext } from "../../contexts/dataContext";
+import { FaStar } from "react-icons/fa";
+import { ToastContainer } from "react-toastify";
+import { isInCart, isInWishlist } from "../../utils/productFunctions";
 import {
   quantityHandler,
   removeFromCartHandler,
@@ -11,8 +12,7 @@ import {
   removeFromWishlistHandler,
   addToWishlistHandler,
 } from "../../services/wishlistServices";
-import { useLocation, useNavigate } from "react-router";
-import { ToastContainer } from "react-toastify";
+import "./cartCard.css";
 export const CartCard = ({ product }) => {
   const { _id, name, price, imageUrl, altText, qty, rating, bestseller } =
     product;
@@ -28,9 +28,15 @@ export const CartCard = ({ product }) => {
 
   return (
     <>
-      <ToastContainer />
       <div className="cart-card-container">
-        <img src={imageUrl} alt={altText} />
+        <img
+          src={imageUrl}
+          alt={altText}
+          onClick={(e) => {
+            navigate(`/product-detail/${_id}`);
+            e.stopPropagation();
+          }}
+        />
         <div className="cart-card-content">
           <div className="cart-card-title">
             <span>{name}</span>
@@ -38,15 +44,17 @@ export const CartCard = ({ product }) => {
               {rating} <FaStar />
             </span>
           </div>
-          <span>{price}</span>
+          <span className="cart-card-price">Rs {price}</span>
           <div className="cart-card-quantity">
             <button
+              className="primary-oval-button quantity-btn"
               onClick={() => quantityHandler(_id, "decrement", addDataDispatch)}
             >
               -
             </button>
             <p>{qty}</p>
             <button
+              className="primary-oval-button quantity-btn"
               onClick={() => quantityHandler(_id, "increment", addDataDispatch)}
             >
               +
@@ -54,21 +62,21 @@ export const CartCard = ({ product }) => {
           </div>
           <div className="cart-card-buttons">
             <button
-              className="cart-card-button"
+              className=" primary-button cart-card-button"
               onClick={() => removeFromCartHandler(_id, addDataDispatch)}
             >
               Remove
             </button>
             {isProductInWishlist ? (
               <button
-                className="cart-card-button"
+                className="  primary-button cart-card-button"
                 onClick={() => removeFromWishlistHandler(_id, addDataDispatch)}
               >
                 Remove from Wishlist
               </button>
             ) : (
               <button
-                className="cart-card-button"
+                className=" primary-button cart-card-button"
                 onClick={() =>
                   addToWishlistHandler(
                     product,

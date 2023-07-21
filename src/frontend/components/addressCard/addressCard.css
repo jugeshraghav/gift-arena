@@ -5,14 +5,6 @@
   flex-direction: column;
   gap: 1rem;
 }
-.user-address {
-  text-align: left;
-  background-color: rgba(29, 54, 111, 0.2);
-  border: 1px solid var(--primary-color);
-  width: 100%;
-  padding: 1rem;
-  border-radius: 20px;
-}
 
 .user-address-header {
   display: flex;
@@ -21,22 +13,34 @@
 }
 .user-address-header-title {
   font-size: 16px;
-  font-weight: bold;
+  font-family: cursive;
 }
-.user-address-button-container {
+.user-address {
+  text-align: left;
+  background-color: rgba(101, 55, 181, 0.2);
+  border: 1px solid var(--primary-color);
+  width: 100%;
+  padding: 1rem;
+  border-radius: 20px;
+  font-size: 14px;
+}
+.user-address-main {
+  display: flex;
+  justify-content: space-between;
+}
+.address-owner-name {
+  font-family: cursive;
+}
+.user-address-icon-container {
   display: flex;
   gap: 1rem;
 }
-.user-address button,
-.user-address-header button {
-  width: 150px;
-  padding: 0.5rem;
-  border: 1px solid var(--primary-color);
-  background-color: var(--primary-color);
-  color: white;
+.address-card-icon {
+  color: rgba(101, 55, 181, 0.5);
+  font-size: 20px;
+  cursor: pointer;
 }
-.user-address button:hover,
-.user-address-header button:hover {
-  background-color: white;
-  color: var(--primary-color);
+
+.address-card-icon:hover {
+  color: rgba(101, 55, 181, 1);
 }

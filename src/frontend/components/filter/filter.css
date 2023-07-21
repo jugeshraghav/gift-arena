@@ -1,9 +1,37 @@
 .filters-container {
-  background-color: rgba(29, 54, 111, 0.2);
-  color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 1);
   padding: 2rem;
   text-align: left;
+  height: 100%;
+}
+.filters-container * {
+  margin: 0.2rem;
 }
 
-/* --primary-color: rgba(29, 54, 111, 1);
-  --secondary-color: rgb(22, 197, 129); */
+.filters-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.filters-heading {
+  font-size: 16px;
+}
+
+.filters-header,
+.product-type-filter,
+.product-price-filter,
+.product-sort-filter {
+  border-bottom: 1px solid grey;
+}
+.filters-header,
+.product-type-filter,
+.product-price-filter,
+.product-sort-filter,
+.product-rating-filter {
+  padding: 0.5rem 0;
+  font-size: 14px;
+}
+.product-price-filter input {
+  width: 100%;
+}

@@ -23,12 +23,21 @@ export const ProductCard = (props) => {
   const isProductInWishlist = isInWishlist(wishlist, _id);
   const navigate = useNavigate();
   const location = useLocation();
+
   return (
     <>
       <div className="product-card">
-        <NavLink to={`/product-detail/${_id}`}>
-          <img src={imageUrl} alt={altText} />
-        </NavLink>
+        <div className="product-card-image-container">
+          <img
+            src={imageUrl}
+            alt={altText}
+            onClick={(e) => {
+              navigate(`/product-detail/${_id}`);
+              e.stopPropagation();
+            }}
+          />
+        </div>
+
         <div className="product-card-content">
           <div className="product-card-title">
             <p className="product-card-text">{name}</p>
@@ -39,10 +48,34 @@ export const ProductCard = (props) => {
               </span>
             </p>
           </div>
-          <div className="product-card-price">
-            <p className="product-card-text">Rs {price}</p>
-          </div>
+          <p className="product-card-price">Rs {price}</p>
+          {isProductInCart ? (
+            <button className="secondary-button product-card-btn">
+              {" "}
+              <NavLink
+                to="/cart"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                Go to Cart{" "}
+              </NavLink>
+            </button>
+          ) : (
+            <button
+              className="primary-button product-card-btn"
+              onClick={() =>
+                addToCartHandler(
+                  props.cardDetails,
+                  addDataDispatch,
+                  navigate,
+                  location
+                )
+              }
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
+
         {isProductInWishlist ? (
           <button
             style={{ color: "red" }}
@@ -70,32 +103,6 @@ export const ProductCard = (props) => {
         )}
 
         {bestseller && <span className="bestseller-strip">Bestseller</span>}
-        {/* {console.log(isInCart(cart, _id))} */}
-        {isProductInCart ? (
-          <button className="product-card-button">
-            {" "}
-            <NavLink
-              to="/cart"
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              Go to Cart{" "}
-            </NavLink>
-          </button>
-        ) : (
-          <button
-            className="product-card-button"
-            onClick={() =>
-              addToCartHandler(
-                props.cardDetails,
-                addDataDispatch,
-                navigate,
-                location
-              )
-            }
-          >
-            Add to Cart
-          </button>
-        )}
       </div>
     </>
   );

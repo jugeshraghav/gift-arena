@@ -4,17 +4,34 @@ import { CartCard } from "../components/cartCard/CartCard";
 import { Checkout } from "../components/checkoutCard/Checkout";
 import "../../App.css";
 import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router";
 
 export const Cart = () => {
   const { cart } = useContext(DataContext);
 
+  const navigate = useNavigate();
   return (
     <>
       {cart.length === 0 ? (
-        <h1>You haven't added anything in card yet.</h1>
+        <div className="no-items-container">
+          <p className="no-items-text">
+            You haven't added anything to wishlist Yet
+          </p>
+          <button
+            className="primary-button"
+            onClick={() => navigate(`/products`)}
+          >
+            Shop Now
+          </button>
+          <button
+            className="primary-button"
+            onClick={() => navigate(`/wishlist`)}
+          >
+            Move From Wishlist
+          </button>
+        </div>
       ) : (
         <>
-          <h1>Cart ({cart.length})</h1>
           <div className="cart-container">
             <div className="cart-cards-container">
               {cart.map((product) => (

@@ -1,7 +1,7 @@
 import { useContext } from "react";
+import { NavLink } from "react-router-dom";
 import { DataContext } from "../../contexts/dataContext";
 import "./checkout.css";
-import { NavLink } from "react-router-dom";
 export const Checkout = () => {
   const { cart, addDataDispatch } = useContext(DataContext);
   const itemsInCart = cart.length;
@@ -29,9 +29,11 @@ export const Checkout = () => {
           <span>Rs {discountedPrice}</span>
         </div>
         <hr></hr>
-        <p>You will save Rs {savings} on this order</p>
+        <p className="discount-statement">
+          You will save Rs {savings} on this order
+        </p>
         <NavLink to="/checkout">
-          <button type="button" className="checkout-button">
+          <button type="button" className="fill-color-button checkout-button">
             Checkout
           </button>
         </NavLink>

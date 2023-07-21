@@ -1,11 +1,13 @@
 import { useContext } from "react";
+
+import { FilterContext } from "../../contexts/filterContext";
+
 import "./filter.css";
 import "../../../App.css";
-import { FilterContext } from "../../contexts/filterContext";
 
 export const Filter = () => {
   const { appliedFilters, filterDispatch } = useContext(FilterContext);
-  console.log(appliedFilters);
+
   const {
     rating_from_filter,
     sort_string_from_filter,
@@ -32,24 +34,18 @@ export const Filter = () => {
   return (
     <>
       <div className="filters-container">
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <h4>Filters</h4>
+        <div className="filters-header">
+          <h4 className="filters-heading">Filters</h4>
           <button
-            style={{ border: "1px solid", padding: "0.2rem 0.4rem" }}
+            className="primary-oval-button"
             onClick={() => clearFilterHandler()}
           >
             Clear
           </button>
         </div>
-        <hr></hr>
+
         <div className="product-type-filter">
-          <h4>Filter By Category</h4>
+          <h4 className="filters-heading">Filter By Category</h4>
           <div>
             <input
               type="checkbox"
@@ -78,9 +74,9 @@ export const Filter = () => {
             Plants
           </div>
         </div>
-        <hr></hr>
+
         <div className="product-price-filter">
-          <h4>Filter By Price Range</h4>
+          <h4 className="filters-heading">Filter By Price Range</h4>
           <div>
             <input
               type="range"
@@ -102,9 +98,9 @@ export const Filter = () => {
             </div>
           </div>
         </div>
-        <hr></hr>
+
         <div className="product-sort-filter">
-          <h4>Sort By Price</h4>
+          <h4 className="filters-heading">Sort By Price</h4>
           <div>
             <input
               type="radio"
@@ -126,9 +122,9 @@ export const Filter = () => {
             High To Low
           </div>
         </div>
-        <hr></hr>
+
         <div className="product-rating-filter">
-          <h4>Filter By Rating</h4>
+          <h4 className="filters-heading">Filter By Rating</h4>
           <div>
             <input
               type="radio"

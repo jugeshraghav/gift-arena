@@ -11,6 +11,7 @@ import { AddressModal } from "../modals/AddressModal";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AddressCard } from "../components/addressCard/AddressCard";
 
 export const Checkout = () => {
   const [showAddressModal, setShowAddressModal] = useState(false);
@@ -31,9 +32,9 @@ export const Checkout = () => {
   const totalPrice = cart.reduce((acc, { price, qty }) => acc + price * qty, 0);
 
   const navigate = useNavigate();
-  const selectAddressHandler = (e, address) => {
-    e.target.checked && setSelectedAddress(address);
-  };
+  // const selectAddressHandler = (e, address) => {
+  //   e.target.checked && setSelectedAddress(address);
+  // };
 
   const paymentHandler = () => {
     if (selectedAddress) {
@@ -47,11 +48,10 @@ export const Checkout = () => {
   return (
     <>
       <div className="payment-page">
-        <h2>Checkout</h2>{" "}
         <div className="payment-page-container">
-          <div className="user-address-container">
-            <div className="user-address-header">
-              <p className="user-address-header-title">My Addresses</p>
+          {/* <div className="address-container">
+            <div className="address-header">
+              <p className="address-header-title">My Addresses</p>
               <button onClick={() => setShowAddressModal(true)}>
                 Add New Address
               </button>
@@ -89,7 +89,9 @@ export const Checkout = () => {
             ) : (
               <h1>Oops! no Address Found</h1>
             )}
-          </div>
+          </div> */}
+
+          <AddressCard />
           <div className="payment-card">
             <p className="payment-card-title">Order-Details</p>
             <hr></hr>
@@ -120,13 +122,7 @@ export const Checkout = () => {
             <p className="payment-card-title">Delivery Details</p>
             <hr></hr>
             {selectedAddress !== null ? (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                }}
-              >
+              <section className="payment-card-selected-address">
                 <p style={{ fontWeight: "bold" }}>{selectedAddress.name}</p>
 
                 <p>{selectedAddress.area}</p>
@@ -135,12 +131,14 @@ export const Checkout = () => {
                   {selectedAddress.pincode}
                 </p>
                 <p>{selectedAddress.phoneNumber}</p>
-              </div>
+              </section>
             ) : (
               <p className="payment-card-subtitle">Oops! no Address Found</p>
             )}
 
-            <button onClick={() => paymentHandler()}>Proceed to Payment</button>
+            <button className="primary-button" onClick={() => paymentHandler()}>
+              Proceed to Payment
+            </button>
           </div>
         </div>
       </div>

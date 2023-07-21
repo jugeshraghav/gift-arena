@@ -1,4 +1,5 @@
 .checkout-card-container {
+  width: 100%;
   border: 1px solid grey;
   padding: 1rem;
   display: flex;
@@ -8,11 +9,10 @@
 
 .checkout-card-heading {
   font-size: 20px;
+  font-family: cursive;
+  text-align: center;
 }
-.checkout-card-subheading {
-  font-size: 16px;
-}
-.checkout-card-heading,
+
 .checkout-card-subheading {
   font-weight: bold;
 }
@@ -23,14 +23,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 14px;
+}
+.discount-statement {
+  font-size: 14px;
 }
 
 .checkout-button {
   width: 100%;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  padding: 0.5rem;
-  font-weight: bold;
 }
 
 @media (max-width: 968px) {

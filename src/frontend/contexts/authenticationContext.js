@@ -26,6 +26,8 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const loginHandler = async () => {
+    console.log(location);
+
     if (location?.state?.from !== null) {
       const response = await loginService(
         userLoginDetails?.email,

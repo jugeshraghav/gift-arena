@@ -1,53 +1,35 @@
-import { useContext, useReducer, useState } from "react";
-import { v4 as uuid } from "uuid";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authenticationContext";
-import "./user.css";
-import { dataReducer, initial_state } from "../../reducers/dataReducer";
-import { DataContext } from "../../contexts/dataContext";
-import { AddressModal } from "../../modals/AddressModal";
-import {
-  deleteAddressHandler,
-  editAddressHandler,
-} from "../../services/addressServices";
+
 import { AddressCard } from "../addressCard/AddressCard";
-import { ToastContainer } from "react-toastify";
+import "./user.css";
+
 export const User = () => {
-  const [state, dispatch] = useReducer(dataReducer, initial_state);
-  const [viewProfile, setViewProfile] = useState(true);
   const { logoutHandler } = useContext(AuthContext);
-  const { address, addDataDispatch } = useContext(DataContext);
-  // console.log(user);
+  const [viewProfile, setViewProfile] = useState(true);
   const user = JSON.parse(localStorage.getItem("userDetails"));
-  console.log(user);
-  // console.log(JSON.parse(user2));
   const { firstName, lastName, email } = user;
-  // console.log(address);
-
-  const [showAddressModal, setShowAddressModal] = useState(false);
-
-  const [newAddress, setNewAddress] = useState({
-    _id: uuid(),
-    name: "",
-    area: "",
-    city: "",
-    state: "",
-    pincode: "",
-    phoneNumber: "",
-  });
-
-  const [addressToBeEdited, setAddressToBeEdited] = useState({});
 
   return (
     <>
-      <ToastContainer />
       <div className="user-details-container">
         <div className="user-details">
           <p className="user-title">
             Hello {firstName} {lastName}
           </p>
           <div className="user-details-header">
-            <button onClick={() => setViewProfile(true)}>Profile</button>
-            <button onClick={() => setViewProfile(false)}>Address</button>
+            <button
+              className="primary-button"
+              onClick={() => setViewProfile(true)}
+            >
+              Profile
+            </button>
+            <button
+              className="primary-button"
+              onClick={() => setViewProfile(false)}
+            >
+              Address
+            </button>
           </div>
           {viewProfile ? (
             <div className="user-details-content">
@@ -62,7 +44,7 @@ export const User = () => {
                 <span>{email}</span>
               </div>
               <button
-                className="user-card-button"
+                className="user-card-button fill-color-button"
                 onClick={() => logoutHandler()}
               >
                 Logout

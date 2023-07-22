@@ -5,7 +5,15 @@ export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(dataReducer, initial_state);
-  const { allProducts, categories, cart, wishlist, address } = state;
+  const {
+    allProducts,
+    categories,
+    cart,
+    wishlist,
+    allAddresses,
+    selectedAddress,
+    addressToBeEdited,
+  } = state;
 
   const encodedToken = localStorage.getItem("token");
 
@@ -85,7 +93,9 @@ export const DataProvider = ({ children }) => {
         categories,
         cart,
         wishlist,
-        address,
+        allAddresses,
+        selectedAddress,
+        addressToBeEdited,
         getCartItems,
         getWishlistItems,
         addDataDispatch: dispatch,

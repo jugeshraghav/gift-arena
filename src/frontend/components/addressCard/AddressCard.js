@@ -1,86 +1,80 @@
+import { useContext, useState } from "react";
+import { useLocation } from "react-router";
 import { MdDelete } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
-import { useContext, useState } from "react";
-import { v4 as uuid } from "uuid";
 import { DataContext } from "../../contexts/dataContext";
 import "./addressCard.css";
-import {
-  editAddressHandler,
-  deleteAddressHandler,
-  addAddressHandler,
-} from "../../services/addressServices";
 import { AddressModal } from "../../modals/AddressModal";
 
 export const AddressCard = () => {
+  const { allAddresses, addDataDispatch } = useContext(DataContext);
   const [showAddressModal, setShowAddressModal] = useState(false);
-  const [newAddress, setNewAddress] = useState({
-    _id: uuid(),
-    name: "",
-    area: "",
-    city: "",
-    state: "",
-    pincode: "",
-    phoneNumber: "",
-  });
-  const [selectedAddress, setSelectedAddress] = useState(null);
-  const [addressToBeEdited, setAddressToBeEdited] = useState({});
-  const { address, addDataDispatch } = useContext(DataContext);
+  const location = useLocation();
+
   const selectAddressHandler = (e, address) => {
-    e.target.checked && setSelectedAddress(address);
+    e.target.checked &&
+      addDataDispatch({ type: "set_selected_address", payLoad: address });
   };
+
+  const setAddressToBeEditedHandler = (addressId) => {
+    addDataDispatch({ type: "set_address_to_be_edited", payLoad: addressId });
+    setShowAddressModal(true);
+  };
+  const addNewAddressHandler = () => {
+    setShowAddressModal(true);
+    addDataDispatch({ type: "set_address_to_be_edited", payLoad: null });
+  };
+
+  const deleteAddressHandler = (addressId, addDataDispatch) => {
+    addDataDispatch({ type: "delete_address", payLoad: addressId });
+  };
+
   return (
     <>
+      <AddressModal
+        show={showAddressModal}
+        onClose={() => setShowAddressModal(false)}
+      />
       <div className="user-address-container">
         <div className="user-address-header">
           <p className="user-address-header-title">My Addresses</p>
           <button
             className="fill-color-button"
-            onClick={() => setShowAddressModal(true)}
+            onClick={() => {
+              addNewAddressHandler();
+            }}
           >
             Add New Address
           </button>
         </div>
 
-        {showAddressModal && (
-          <AddressModal
-            addressId={addressToBeEdited}
-            setShowAddressModal={setShowAddressModal}
-            newAddress={newAddress}
-            setNewAddress={setNewAddress}
-          />
-        )}
-
-        {address ? (
-          address.map((addressItem) => (
+        {allAddresses ? (
+          allAddresses?.map((addressItem) => (
             <div className="user-address">
               <div className="user-address-main">
-                <p className="address-owner-name">{addressItem.name}</p>
+                <p className="address-owner-name">{addressItem?.name}</p>
 
                 <div className="user-address-icon-container">
                   <AiFillEdit
                     className="address-card-icon"
                     onClick={() =>
-                      editAddressHandler(
-                        addressItem._id,
-                        addressItem,
-                        setNewAddress,
-                        setAddressToBeEdited,
-                        setShowAddressModal
-                      )
+                      setAddressToBeEditedHandler(addressItem?._id)
                     }
                   />
 
                   <MdDelete
                     className="address-card-icon"
                     onClick={() =>
-                      deleteAddressHandler(addressItem._id, addDataDispatch)
+                      deleteAddressHandler(addressItem?._id, addDataDispatch)
                     }
                   />
-                  <input
-                    type="radio"
-                    onChange={(e) => selectAddressHandler(e, addressItem)}
-                    name="selected-address"
-                  ></input>
+                  {location?.pathname === "/checkout" && (
+                    <input
+                      type="radio"
+                      onChange={(e) => selectAddressHandler(e, addressItem)}
+                      name="selected-address"
+                    ></input>
+                  )}
                 </div>
               </div>
               <p>{addressItem.area}</p>

@@ -1,6 +1,6 @@
 export const initial_state = {
   user: {},
-  address: [
+  allAddresses: [
     {
       _id: "1",
       name: "Adarsh Balika",
@@ -20,6 +20,8 @@ export const initial_state = {
       phoneNumber: "1987654321",
     },
   ],
+  selectedAddress: null,
+  addressToBeEdited: null,
   allProducts: [],
   cart: [],
   wishlist: [],
@@ -27,9 +29,9 @@ export const initial_state = {
 };
 
 export const dataReducer = (state, action) => {
-  const { type, payLoad, addressId } = action;
-  // const addressFound = payLoad?.address;
-  console.log(type, addressId, payLoad);
+  const { type, payLoad } = action;
+
+  console.log(type, payLoad);
   switch (type) {
     case "get_all_products":
       return { ...state, allProducts: [...payLoad] };
@@ -83,23 +85,30 @@ export const dataReducer = (state, action) => {
         ...state,
         cart: [],
       };
+    case "set_selected_address":
+      return {
+        ...state,
+        selectedAddress: payLoad,
+      };
+    case "set_address_to_be_edited":
+      return { ...state, addressToBeEdited: payLoad };
     case "delete_address":
       return {
         ...state,
-        address: state.address.filter(({ _id }) => _id !== payLoad),
+        allAddresses: state.allAddresses.filter(({ _id }) => _id !== payLoad),
       };
-    case "add_address":
+    case "add_new_address":
       return {
         ...state,
-        address: [...state.address, payLoad],
+        allAddresses: [...state.allAddresses, payLoad],
       };
-    case "edit_address":
+
+    case "update_existing_address":
       return {
         ...state,
-        address: state.address.map((address) =>
-          address._id === addressId ? { ...payLoad } : address
-        ),
+        allAddresses: payLoad,
       };
+
     default:
       return state;
   }

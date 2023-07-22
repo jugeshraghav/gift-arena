@@ -1,40 +1,15 @@
-import { useContext, useState } from "react";
-import "../../App.css";
-import { v4 as uuid } from "uuid";
-import { DataContext } from "../contexts/dataContext";
-import {
-  editAddressHandler,
-  deleteAddressHandler,
-  addAddressHandler,
-} from "../services/addressServices";
-import { AddressModal } from "../modals/AddressModal";
-import { useNavigate } from "react-router";
-import { ToastContainer, toast } from "react-toastify";
+import { useContext } from "react";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { DataContext } from "../contexts/dataContext";
 import { AddressCard } from "../components/addressCard/AddressCard";
+import "../../App.css";
 
 export const Checkout = () => {
-  const [showAddressModal, setShowAddressModal] = useState(false);
-  const [newAddress, setNewAddress] = useState({
-    _id: uuid(),
-    name: "",
-    area: "",
-    city: "",
-    state: "",
-    pincode: "",
-    phoneNumber: "",
-  });
-  const [selectedAddress, setSelectedAddress] = useState(null);
-  const [addressToBeEdited, setAddressToBeEdited] = useState({});
-  const { address, cart, addDataDispatch } = useContext(DataContext);
+  const { selectedAddress, cart, addDataDispatch } = useContext(DataContext);
   const itemsInCart = cart.length;
   const discount = 5;
   const totalPrice = cart.reduce((acc, { price, qty }) => acc + price * qty, 0);
-
-  const navigate = useNavigate();
-  // const selectAddressHandler = (e, address) => {
-  //   e.target.checked && setSelectedAddress(address);
-  // };
 
   const paymentHandler = () => {
     if (selectedAddress) {
@@ -49,48 +24,6 @@ export const Checkout = () => {
     <>
       <div className="payment-page">
         <div className="payment-page-container">
-          {/* <div className="address-container">
-            <div className="address-header">
-              <p className="address-header-title">My Addresses</p>
-              <button onClick={() => setShowAddressModal(true)}>
-                Add New Address
-              </button>
-            </div>
-            {showAddressModal && (
-              <AddressModal
-                addressId={addressToBeEdited}
-                setShowAddressModal={setShowAddressModal}
-                newAddress={newAddress}
-                setNewAddress={setNewAddress}
-              />
-            )}
-
-            {address ? (
-              address.map((addressItem) => (
-                <div className="user-address">
-                  <div
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <p style={{ fontWeight: "bold" }}>{addressItem.name}</p>
-                    <input
-                      type="radio"
-                      onChange={(e) => selectAddressHandler(e, addressItem)}
-                      name="selected-address"
-                    ></input>
-                  </div>
-                  <p>{addressItem.area}</p>
-                  <p>
-                    {addressItem.city}, {addressItem.state},{" "}
-                    {addressItem.pincode}
-                  </p>
-                  <p>{addressItem.phoneNumber}</p>
-                </div>
-              ))
-            ) : (
-              <h1>Oops! no Address Found</h1>
-            )}
-          </div> */}
-
           <AddressCard />
           <div className="payment-card">
             <p className="payment-card-title">Order-Details</p>
@@ -142,7 +75,6 @@ export const Checkout = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </>
   );
 };

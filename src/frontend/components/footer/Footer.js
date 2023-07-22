@@ -12,13 +12,13 @@ export const Footer = () => {
             <FontAwesomeIcon icon={faInstagram} shake />
           </a>
           <a>
-            <FaGithub shake />
+            <FaGithub />
           </a>
           <a>
-            <FaLinkedin shake />
+            <FaLinkedin />
           </a>
           <a>
-            <FontAwesomeIcon icon={faTwitter} shake />
+            <FontAwesomeIcon icon={faTwitter} />
           </a>
         </div>
       </div>

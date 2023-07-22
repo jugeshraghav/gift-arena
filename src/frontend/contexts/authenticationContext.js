@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useReducer } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { dataReducer, initial_state } from "../reducers/dataReducer";
 import { toast } from "react-toastify";
@@ -7,40 +7,21 @@ import { loginService, signUpService } from "../services/authServices";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(dataReducer, initial_state);
-  const { user } = state;
-
-  const [userLoginDetails, setUserLoginDetails] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [signUpDetails, setSignUpDetails] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
-
   const location = useLocation();
   const navigate = useNavigate();
 
-  const loginHandler = async () => {
-    console.log(location);
-
-    if (location?.state?.from !== null) {
-      const response = await loginService(
-        userLoginDetails?.email,
-        userLoginDetails?.password
-      );
-      const user = await response.json();
-      localStorage.setItem("token", user?.encodedToken);
-      localStorage.setItem("userDetails", JSON.stringify(user?.foundUser));
-      navigate(location?.state?.from);
-      toast.success("Successfully Logged in");
-    } else {
-      navigate("/home");
-    }
+  const loginHandler = async (userLoginDetails) => {
+    console.log("hello");
+    const response = await loginService(
+      userLoginDetails?.email,
+      userLoginDetails?.password
+    );
+    const user = await response.json();
+    localStorage.setItem("token", user?.encodedToken);
+    localStorage.setItem("userDetails", JSON.stringify(user?.foundUser));
+    console.log(location?.state?.from?.pathname);
+    navigate(location?.state?.from?.pathname || "/");
+    toast.success("Successfully Logged in");
   };
 
   const logoutHandler = () => {
@@ -49,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     navigate("/login");
   };
 
-  const signUpHandler = async () => {
+  const signUpHandler = async (signUpDetails) => {
     const response = await signUpService(signUpDetails);
     const user = await response.json();
     localStorage.setItem("token", user?.encodedToken);
@@ -62,12 +43,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         loginHandler,
         logoutHandler,
-        userLoginDetails,
-        setUserLoginDetails,
-        signUpDetails,
         signUpHandler,
-        setSignUpDetails,
-        user,
       }}
     >
       {children}

@@ -1,11 +1,16 @@
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/authenticationContext";
 import { NavLink } from "react-router-dom";
-import "./signupCard.css";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/authenticationContext";
 import { User } from "../../components/user/User";
+import "./signupCard.css";
 export const SignupCard = () => {
-  const { signUpHandler, signUpDetails, setSignUpDetails } =
-    useContext(AuthContext);
+  const { signUpHandler } = useContext(AuthContext);
+  const [signUpDetails, setSignUpDetails] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
   const encodedToken = localStorage.getItem("token");
   return (
     <>
@@ -18,7 +23,12 @@ export const SignupCard = () => {
               <p> Dive into the world of gifts</p>
               <h1>SignUp</h1>
             </div>
-            <form>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                signUpHandler(signUpDetails);
+              }}
+            >
               <input
                 style={{ border: "1px solid black" }}
                 id="signup-first-name"

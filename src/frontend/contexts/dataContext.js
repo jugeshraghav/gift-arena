@@ -1,15 +1,11 @@
-import { createContext, useEffect, useState, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { initial_state, dataReducer } from "../reducers/dataReducer";
 
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  //   const [allProducts, setAllProducts] = useState([]);
-  //   const [categories, setCategories] = useState([]);
-
   const [state, dispatch] = useReducer(dataReducer, initial_state);
   const { allProducts, categories, cart, wishlist, address } = state;
-  // console.log("from data context", state);
 
   const encodedToken = localStorage.getItem("token");
 
@@ -27,7 +23,6 @@ export const DataProvider = ({ children }) => {
     try {
       const response = await fetch("/api/products");
       const data = await response.json();
-      console.log(data);
       dispatch({
         type: "get_all_products",
         payLoad: data?.products,
@@ -69,7 +64,6 @@ export const DataProvider = ({ children }) => {
         },
       });
       const wishlist = await response.json();
-      console.log(wishlist);
       dispatch({ type: "get_wishlist", payLoad: wishlist?.wishlist });
     } catch (e) {
       console.log(e);
@@ -81,7 +75,6 @@ export const DataProvider = ({ children }) => {
     getCategories();
   }, []);
 
-  console.log("state from DATA con", state);
   return (
     <DataContext.Provider
       value={{

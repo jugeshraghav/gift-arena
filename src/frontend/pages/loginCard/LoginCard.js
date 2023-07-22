@@ -1,14 +1,20 @@
-import { useContext } from "react";
+import { NavLink } from "react-router-dom";
+
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authenticationContext";
 
+import { User } from "../../components/user/User";
 import "./loginCard.css";
 import "../../../App.css";
-import { NavLink } from "react-router-dom";
-import { User } from "../../components/user/User";
 
 export const LoginCard = () => {
-  const { loginHandler, userLoginDetails, setUserLoginDetails } =
-    useContext(AuthContext);
+  const { loginHandler } = useContext(AuthContext);
+
+  const [userLoginDetails, setUserLoginDetails] = useState({
+    email: "",
+    password: "",
+  });
+  console.log(userLoginDetails);
   const encodedToken = localStorage.getItem("token");
 
   return (
@@ -22,7 +28,12 @@ export const LoginCard = () => {
               <p> Gift Arena provides you exciting gifts</p>
               <h1>Login</h1>
             </div>
-            <form onSubmit={loginHandler}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                loginHandler(userLoginDetails);
+              }}
+            >
               {" "}
               <input
                 type="email"

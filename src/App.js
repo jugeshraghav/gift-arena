@@ -9,11 +9,9 @@ import { Whishlist } from "./frontend/pages/Wishlist";
 import { Root } from "./frontend/pages/Root";
 import { RequiresAuth } from "./frontend/authentication/requiresAuth";
 import { ProductDetail } from "./frontend/pages/ProductDetail";
-import { LoginCard } from "./frontend/pages/loginCard/LoginCard";
-import { SignupCard } from "./frontend/pages/signupCard/SignupCard";
-import { User } from "./frontend/components/user/User";
 import { Checkout } from "./frontend/pages/Checkout";
 import "./App.css";
+import { User } from "./frontend/pages/User";
 
 function App() {
   return (
@@ -24,7 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/mockman" element={<Mockman />} />
-          <Route path="/signup" element={<SignupCard />} />
+
           <Route
             path="/checkout"
             element={
@@ -53,9 +51,10 @@ function App() {
               </RequiresAuth>
             }
           />
-          <Route path="/login" element={<LoginCard />} />
+          <Route path="/login" element={<User />} />
+          <Route path="/signup" element={<User />} />
           <Route
-            path="/user"
+            path="/profile"
             element={
               <RequiresAuth>
                 <User />

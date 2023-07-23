@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authenticationContext";
 
 import { AddressCard } from "../addressCard/AddressCard";
-import "./user.css";
+import "./profileCard.css";
 
-export const User = () => {
+export const ProfileCard = () => {
   const { logoutHandler } = useContext(AuthContext);
   const [viewProfile, setViewProfile] = useState(true);
   const user = JSON.parse(localStorage.getItem("userDetails"));

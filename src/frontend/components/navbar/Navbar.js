@@ -24,6 +24,8 @@ export const Navbar = () => {
     };
   };
 
+  const token = localStorage.getItem("token");
+
   return (
     <>
       <div className="nav-main">
@@ -57,7 +59,7 @@ export const Navbar = () => {
             <NavLink to="/cart" style={getStyle}>
               <AiOutlineShoppingCart className="nav-link" />
             </NavLink>
-            <NavLink to="/login" style={getStyle}>
+            <NavLink to={token ? "/profile" : "login"} style={getStyle}>
               <AiOutlineUser className="nav-link" />
             </NavLink>
             {/* <NavLink to="/mockman">Mockman</NavLink> */}

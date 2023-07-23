@@ -1,21 +1,18 @@
-import { FaHeart, FaStar } from "react-icons/fa";
-import "./productCard.css";
+import { useContext } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { FaHeart, FaStar } from "react-icons/fa";
 import { isInCart, isInWishlist } from "../../utils/productFunctions";
-import { useContext, useReducer } from "react";
 import { DataContext } from "../../contexts/dataContext";
 import { addToCartHandler } from "../../services/cartServices";
 import {
   removeFromWishlistHandler,
   addToWishlistHandler,
 } from "../../services/wishlistServices";
-import { dataReducer, initial_state } from "../../reducers/dataReducer";
-import { ToastContainer } from "react-toastify";
+
+import "./productCard.css";
 
 export const ProductCard = (props) => {
-  // const [state, dispatch] = useReducer(dataReducer, initial_state);
-  const { cart, wishlist, getWishlistItems, getCartItems, addDataDispatch } =
-    useContext(DataContext);
+  const { cart, wishlist, addDataDispatch } = useContext(DataContext);
   const { _id, name, price, imageUrl, altText, rating, bestseller } =
     props.cardDetails;
 

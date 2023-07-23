@@ -1,5 +1,4 @@
 export const initial_state = {
-  user: {},
   allAddresses: [
     {
       _id: "1",
@@ -30,27 +29,19 @@ export const initial_state = {
 
 export const dataReducer = (state, action) => {
   const { type, payLoad } = action;
-
-  console.log(type, payLoad);
   switch (type) {
     case "get_all_products":
       return { ...state, allProducts: [...payLoad] };
-    case "get_user_details":
-      return {
-        ...state,
-        user: { ...state.user, ...payLoad },
-      };
-
     case "get_categories":
       return { ...state, categories: [...payLoad] };
 
+    //wishlist
     case "get_wishlist":
       return {
         ...state,
         wishlist: [...payLoad],
       };
     case "add_to_wishlist":
-      console.log("wishlist pay", payLoad);
       return {
         ...state,
         wishlist: [...payLoad],
@@ -60,6 +51,8 @@ export const dataReducer = (state, action) => {
         ...state,
         wishlist: [...payLoad],
       };
+
+    //cart
     case "get_cart":
       return {
         ...state,
@@ -80,11 +73,15 @@ export const dataReducer = (state, action) => {
         ...state,
         cart: [...payLoad],
       };
+
+    //payment
     case "payment":
       return {
         ...state,
         cart: [],
       };
+
+    //address
     case "set_selected_address":
       return {
         ...state,

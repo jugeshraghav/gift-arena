@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import { initial_state, dataReducer } from "../reducers/dataReducer";
 
 export const DataContext = createContext();
@@ -14,20 +14,14 @@ export const DataProvider = ({ children }) => {
     selectedAddress,
     addressToBeEdited,
   } = state;
-
+  const [isProductsLoading, setIsProductsLoading] = useState(false);
+  const [isCategoryLoading, setIsCategoryLoading] = useState(false);
+  const [isWishlistLoading, setIsWishlistLoading] = useState(false);
+  const [isCartLoading, setIsCartLoading] = useState(false);
   const encodedToken = localStorage.getItem("token");
 
-  const cakes = state?.allProducts?.filter(
-    ({ category }) => category === "Cake"
-  );
-  const flowers = state?.allProducts?.filter(
-    ({ category }) => category === "Flower"
-  );
-  const plants = state?.allProducts?.filter(
-    ({ category }) => category === "Plant"
-  );
-
   const getData = async () => {
+    setIsProductsLoading(true);
     try {
       const response = await fetch("/api/products");
       const data = await response.json();
@@ -37,19 +31,25 @@ export const DataProvider = ({ children }) => {
       });
     } catch (e) {
       console.log(e);
+    } finally {
+      return setInterval(() => setIsProductsLoading(false), 4000);
     }
   };
   const getCategories = async () => {
+    setIsCategoryLoading(true);
     try {
       const response = await fetch("/api/categories");
       const categories = await response.json();
       dispatch({ type: "get_categories", payLoad: categories?.categories });
     } catch (e) {
       console.log(e);
+    } finally {
+      return setInterval(() => setIsCategoryLoading(false), 1000);
     }
   };
 
   const getCartItems = async () => {
+    setIsCartLoading(true);
     try {
       const response = await fetch("/api/user/cart", {
         headers: {
@@ -61,10 +61,13 @@ export const DataProvider = ({ children }) => {
       dispatch({ type: "get_cart", payLoad: cart?.cart });
     } catch (e) {
       console.log(e);
+    } finally {
+      setInterval(() => setIsCartLoading(false), 10000);
     }
   };
 
   const getWishlistItems = async () => {
+    setIsWishlistLoading(true);
     try {
       const response = await fetch("/api/user/wishlist", {
         headers: {
@@ -75,27 +78,27 @@ export const DataProvider = ({ children }) => {
       dispatch({ type: "get_wishlist", payLoad: wishlist?.wishlist });
     } catch (e) {
       console.log(e);
+    } finally {
+      setInterval(() => setIsWishlistLoading(false), 10000);
     }
   };
-
-  useEffect(() => {
-    getData();
-    getCategories();
-  }, []);
 
   return (
     <DataContext.Provider
       value={{
         allProducts,
-        cakes,
-        plants,
-        flowers,
         categories,
         cart,
         wishlist,
         allAddresses,
         selectedAddress,
         addressToBeEdited,
+        isCategoryLoading,
+        isProductsLoading,
+        isCartLoading,
+        isWishlistLoading,
+        getData,
+        getCategories,
         getCartItems,
         getWishlistItems,
         addDataDispatch: dispatch,

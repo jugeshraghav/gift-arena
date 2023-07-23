@@ -8,7 +8,6 @@ export const initial_state_filters = {
 
 export const filterReducer = (state, action) => {
   const { type, payLoad } = action;
-  // console.log(type, payLoad);
   switch (type) {
     case "filter_by_search":
       return {
@@ -16,7 +15,6 @@ export const filterReducer = (state, action) => {
         search_text: payLoad,
       };
     case "filter_by_category":
-      // console.log(payLoad);
       return {
         ...state,
         category_from_filter: state.category_from_filter.includes(payLoad)

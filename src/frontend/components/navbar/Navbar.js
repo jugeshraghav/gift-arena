@@ -1,22 +1,15 @@
+import { useContext, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ImGift } from "react-icons/im";
 import { AiOutlineUser } from "react-icons/ai";
-import { MdExplore } from "react-icons/md";
-import { AiOutlineHome } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
-import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMagnifyingGlass,
-  faBars,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { MdOutlineExplore } from "react-icons/md";
 
-import "./navbar.css";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../contexts/authenticationContext";
 import { FilterContext } from "../../contexts/filterContext";
+import "./navbar.css";
 export const Navbar = () => {
   const { filterDispatch } = useContext(FilterContext);
   const [searchText, setSearchText] = useState("");
@@ -25,13 +18,11 @@ export const Navbar = () => {
     filterDispatch({ type: "filter_by_search", payLoad: searchText });
     navigate("/products");
   };
-  const getStyle = ({ isActive }) => {
+  const getStyle = () => {
     return {
       textDecoration: "none",
     };
   };
-
-  const { loginHandler } = useContext(AuthContext);
 
   return (
     <>

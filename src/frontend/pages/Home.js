@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { DataContext } from "../contexts/dataContext";
 import { FilterContext } from "../contexts/filterContext";
@@ -8,12 +8,14 @@ import "../../App.css";
 export const Home = () => {
   const { categories } = useContext(DataContext);
   const { filterDispatch } = useContext(FilterContext);
+
   const navigate = useNavigate();
   const categoryHandler = (categoryName) => {
     filterDispatch({ type: "clear_filters" });
     filterDispatch({ type: "filter_by_category", payLoad: categoryName });
     navigate("/products");
   };
+
   return (
     <>
       <div className="home">

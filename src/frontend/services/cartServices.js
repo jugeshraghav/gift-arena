@@ -7,9 +7,9 @@ export const addToCartHandler = async (
   navigate,
   location
 ) => {
+  console.log(product._id);
   if (encodedToken) {
     try {
-      console.log(product);
       const response = await fetch(" /api/user/cart", {
         method: "post",
         body: JSON.stringify({ product }),
@@ -19,6 +19,7 @@ export const addToCartHandler = async (
       });
 
       const cartObj = await response.json();
+      console.log(cartObj?.cart);
       dispatch({ type: "add_to_cart", payLoad: cartObj?.cart });
       toast.success("Item added to Cart");
     } catch (e) {
@@ -29,10 +30,7 @@ export const addToCartHandler = async (
   }
 };
 export const removeFromCartHandler = async (productId, dispatch) => {
-  //   const { getCartItems } = useContext(DataContext);
-
   try {
-    console.log(productId);
     const response = await fetch(`/api/user/cart/${productId}`, {
       method: "DELETE",
       headers: { authorization: encodedToken },
@@ -49,7 +47,6 @@ export const removeFromCartHandler = async (productId, dispatch) => {
 
 export const quantityHandler = async (productId, type, dispatch) => {
   try {
-    console.log(productId, type);
     const response = await fetch(`/api/user/cart/${productId}`, {
       method: "POST",
       body: JSON.stringify({
@@ -59,10 +56,8 @@ export const quantityHandler = async (productId, type, dispatch) => {
       }),
       headers: { authorization: encodedToken },
     });
-    // getCartItems();
     const cartObj = await response.json();
     dispatch({ type: "update_quantity", payLoad: cartObj?.cart });
-    console.log(await response.json());
   } catch (e) {
     console.log(e);
   }

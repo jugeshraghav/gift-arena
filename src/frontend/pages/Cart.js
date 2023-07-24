@@ -1,15 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import ClipLoader from "react-spinners/ClipLoader";
 import { DataContext } from "../contexts/dataContext";
 import { CartCard } from "../components/cartCard/CartCard";
 import { Checkout } from "../components/checkoutCard/Checkout";
 import "../../App.css";
+import {
+  addToCartHandler,
+  quantityHandler,
+  removeFromCartHandler,
+} from "../services/cartServices";
 
 export const Cart = () => {
-  const { cart, isCartLoading } = useContext(DataContext);
+  const { cart, getCartItems, isCartLoading } = useContext(DataContext);
 
   const navigate = useNavigate();
+  useEffect(() => {
+    getCartItems();
+  }, [addToCartHandler, removeFromCartHandler, quantityHandler]);
   return (
     <>
       {isCartLoading ? (
@@ -22,13 +30,13 @@ export const Cart = () => {
             You haven't added anything to wishlist Yet
           </p>
           <button
-            className="primary-button"
+            className="cart-page-btn primary-button"
             onClick={() => navigate(`/products`)}
           >
             Shop Now
           </button>
           <button
-            className="primary-button"
+            className="cart-page-btn primary-button"
             onClick={() => navigate(`/wishlist`)}
           >
             Move From Wishlist
@@ -39,7 +47,7 @@ export const Cart = () => {
           <div className="cart-container">
             <div className="cart-cards-container">
               {cart.map((product) => (
-                <CartCard product={product} />
+                <CartCard product={product} key={product?._id} />
               ))}
             </div>
             <div className="checkout-container">

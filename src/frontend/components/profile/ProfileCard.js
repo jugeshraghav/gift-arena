@@ -3,13 +3,24 @@ import { AuthContext } from "../../contexts/authenticationContext";
 
 import { AddressCard } from "../addressCard/AddressCard";
 import "./profileCard.css";
+import { NavLink, useLocation } from "react-router-dom";
+import { OrdersCard } from "../ordersCard/OrdersCard";
 
 export const ProfileCard = () => {
   const { logoutHandler } = useContext(AuthContext);
-  const [viewProfile, setViewProfile] = useState(true);
+
   const user = JSON.parse(localStorage.getItem("userDetails"));
   const { firstName, lastName, email } = user;
 
+  const location = useLocation();
+
+  const getStyle = ({ isActive }) => {
+    return {
+      textDecoration: "none",
+      backgroundColor: isActive ? "rgb(101,55,181)" : "",
+      color: isActive ? "white" : "",
+    };
+  };
   return (
     <>
       <div className="user-details-container">
@@ -18,20 +29,29 @@ export const ProfileCard = () => {
             Hello {firstName} {lastName}
           </p>
           <div className="user-details-header">
-            <button
-              className="primary-button"
-              onClick={() => setViewProfile(true)}
+            <NavLink
+              style={getStyle}
+              className="profile-card-btn primary-button"
+              to="/profile"
             >
               Profile
-            </button>
-            <button
-              className="primary-button"
-              onClick={() => setViewProfile(false)}
+            </NavLink>
+            <NavLink
+              style={getStyle}
+              className="profile-card-btn primary-button"
+              to="/address"
             >
               Address
-            </button>
+            </NavLink>
+            <NavLink
+              style={getStyle}
+              className="profile-card-btn primary-button"
+              to="/order-summary"
+            >
+              My Orders
+            </NavLink>
           </div>
-          {viewProfile ? (
+          {location.pathname === "/profile" ? (
             <div className="user-details-content">
               <div className="user-name">
                 <span className="user-detail-heading">Name :</span>{" "}
@@ -50,8 +70,10 @@ export const ProfileCard = () => {
                 Logout
               </button>
             </div>
-          ) : (
+          ) : location.pathname === "/address" ? (
             <AddressCard />
+          ) : (
+            <OrdersCard />
           )}
         </div>
       </div>

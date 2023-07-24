@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authenticationContext";
-import { User } from "../user/User";
+
 import "./signupCard.css";
 export const SignupCard = () => {
   const { signUpHandler } = useContext(AuthContext);

@@ -9,7 +9,6 @@ export const addToWishlistHandler = async (
 ) => {
   if (encodedToken) {
     try {
-      console.log(product);
       const response = await fetch("/api/user/wishlist", {
         method: "post",
         body: JSON.stringify({ product }),

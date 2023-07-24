@@ -25,6 +25,7 @@ export const initial_state = {
   cart: [],
   wishlist: [],
   categories: [],
+  orderList: [],
 };
 
 export const dataReducer = (state, action) => {
@@ -79,6 +80,7 @@ export const dataReducer = (state, action) => {
       return {
         ...state,
         cart: [],
+        orderList: [...state.orderList, ...payLoad],
       };
 
     //address

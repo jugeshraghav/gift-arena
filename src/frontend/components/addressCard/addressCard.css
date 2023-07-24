@@ -44,3 +44,8 @@
 .address-card-icon:hover {
   color: rgba(101, 55, 181, 1);
 }
+.no-address-text {
+  font-size: 16px;
+  font-family: cursive;
+  text-align: center;
+}

@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { DataContext } from "../contexts/dataContext";
 import { AddressCard } from "../components/addressCard/AddressCard";
 import "../../App.css";
+import { useNavigate } from "react-router";
 
 export const Checkout = () => {
   const { selectedAddress, cart, addDataDispatch } = useContext(DataContext);
@@ -11,9 +12,16 @@ export const Checkout = () => {
   const discount = 5;
   const totalPrice = cart.reduce((acc, { price, qty }) => acc + price * qty, 0);
 
+  const navigate = useNavigate();
   const paymentHandler = () => {
     if (selectedAddress) {
-      addDataDispatch({ type: "payment" });
+      const myOrders = cart?.map((product) => ({
+        ...product,
+        address: selectedAddress,
+      }));
+
+      addDataDispatch({ type: "payment", payLoad: myOrders });
+      navigate("/order-successfull");
       toast.success("Order Placed");
     } else {
       toast.warning("can't proceed, add address");

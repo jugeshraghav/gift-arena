@@ -9,6 +9,7 @@ export const DataProvider = ({ children }) => {
     allProducts,
     categories,
     cart,
+    orderList,
     wishlist,
     allAddresses,
     selectedAddress,
@@ -32,7 +33,7 @@ export const DataProvider = ({ children }) => {
     } catch (e) {
       console.log(e);
     } finally {
-      return setInterval(() => setIsProductsLoading(false), 4000);
+      return setInterval(() => setIsProductsLoading(false), 1000);
     }
   };
   const getCategories = async () => {
@@ -51,18 +52,18 @@ export const DataProvider = ({ children }) => {
   const getCartItems = async () => {
     setIsCartLoading(true);
     try {
+      console.log("hello from get cart items");
       const response = await fetch("/api/user/cart", {
         headers: {
           authorization: encodedToken,
         },
       });
       const cart = await response.json();
-      console.log(cart);
       dispatch({ type: "get_cart", payLoad: cart?.cart });
     } catch (e) {
       console.log(e);
     } finally {
-      setInterval(() => setIsCartLoading(false), 10000);
+      setInterval(() => setIsCartLoading(false), 1000);
     }
   };
 
@@ -79,7 +80,7 @@ export const DataProvider = ({ children }) => {
     } catch (e) {
       console.log(e);
     } finally {
-      setInterval(() => setIsWishlistLoading(false), 10000);
+      setInterval(() => setIsWishlistLoading(false), 1000);
     }
   };
 
@@ -89,6 +90,7 @@ export const DataProvider = ({ children }) => {
         allProducts,
         categories,
         cart,
+        orderList,
         wishlist,
         allAddresses,
         selectedAddress,

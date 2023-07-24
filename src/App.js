@@ -12,6 +12,7 @@ import { ProductDetail } from "./frontend/pages/ProductDetail";
 import { Checkout } from "./frontend/pages/Checkout";
 import "./App.css";
 import { User } from "./frontend/pages/User";
+import { OrderSuccessfull } from "./frontend/pages/OrderSuccessfull";
 
 function App() {
   return (
@@ -28,6 +29,14 @@ function App() {
             element={
               <RequiresAuth>
                 <Checkout />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/order-successfull"
+            element={
+              <RequiresAuth>
+                <OrderSuccessfull />
               </RequiresAuth>
             }
           />
@@ -55,6 +64,22 @@ function App() {
           <Route path="/signup" element={<User />} />
           <Route
             path="/profile"
+            element={
+              <RequiresAuth>
+                <User />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/address"
+            element={
+              <RequiresAuth>
+                <User />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/order-summary"
             element={
               <RequiresAuth>
                 <User />

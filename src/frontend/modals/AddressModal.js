@@ -19,14 +19,13 @@ export const AddressModal = ({ show, onClose }) => {
     pincode: "",
     phoneNumber: "",
   };
-  console.log(addressToBeEdited, addressDetailsToBeEdited?.name);
+
   const [currentAddress, setCurrentAddress] = useState(initial_address_details);
 
   //Handlers
   const addressInputHandler = (e) => {
     setCurrentAddress({ ...currentAddress, [e.target.name]: e.target.value });
   };
-  console.log(currentAddress);
 
   const updateAllAddresses = () => {
     if (addressToBeEdited !== null) {

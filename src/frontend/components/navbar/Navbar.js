@@ -65,25 +65,6 @@ export const Navbar = () => {
             {/* <NavLink to="/mockman">Mockman</NavLink> */}
           </div>
         </div>
-        {/* <div className="secondary-navbar">
-          <div className="nav-links-secondary-navbar">
-            <NavLink to="/" style={getStyle}>
-              <AiOutlineHome />
-            </NavLink>
-            <NavLink to="/products" style={getStyle}>
-              <MdExplore />
-            </NavLink>
-            <NavLink to="/wishlist" style={getStyle}>
-              <AiOutlineHeart />
-            </NavLink>
-            <NavLink to="/cart" style={getStyle}>
-              <AiOutlineShoppingCart />
-            </NavLink>
-            <NavLink to="/login" style={getStyle}>
-              <AiOutlineUser />
-            </NavLink>
-          </div>
-        </div> */}
       </div>
     </>
   );

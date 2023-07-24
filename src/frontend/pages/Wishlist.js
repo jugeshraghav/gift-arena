@@ -32,7 +32,7 @@ export const Whishlist = () => {
           ) : (
             <div className="products-list">
               {wishlist.map((product) => (
-                <ProductCard cardDetails={product} />
+                <ProductCard cardDetails={product} key={product?._id} />
               ))}
             </div>
           )}

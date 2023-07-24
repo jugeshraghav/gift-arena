@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
   const logoutHandler = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userDetails");
-    navigate("/login");
+    navigate("/");
   };
 
   const signUpHandler = async (signUpDetails) => {

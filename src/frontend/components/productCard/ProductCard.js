@@ -21,6 +21,8 @@ export const ProductCard = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  console.log(isProductInCart);
+
   return (
     <>
       <div className="product-card">

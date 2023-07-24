@@ -32,11 +32,3 @@
 .checkout-button {
   width: 100%;
 }
-
-@media (max-width: 968px) {
-  .checkout-card-container {
-    width: 95vw;
-    margin: 1rem 0;
-    justify-content: space-around;
-  }
-}

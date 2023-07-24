@@ -48,9 +48,9 @@ export const AddressCard = () => {
           </button>
         </div>
 
-        {allAddresses ? (
+        {allAddresses.length > 0 ? (
           allAddresses?.map((addressItem) => (
-            <div className="user-address">
+            <div className="user-address" key={addressItem?._id}>
               <div className="user-address-main">
                 <p className="address-owner-name">{addressItem?.name}</p>
 
@@ -85,7 +85,9 @@ export const AddressCard = () => {
             </div>
           ))
         ) : (
-          <h1>Oops! no Address Found</h1>
+          <div className="user-address">
+            <p className="no-address-text">Oops! no Address Found</p>
+          </div>
         )}
       </div>
     </>

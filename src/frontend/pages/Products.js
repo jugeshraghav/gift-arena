@@ -1,4 +1,6 @@
-import { useContext, useEffect } from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import { BsFilterSquare } from "react-icons/bs";
+import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../contexts/dataContext";
 import { FilterContext } from "../contexts/filterContext";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -8,10 +10,12 @@ import { Filter } from "../components/filter/Filter";
 import { ProductCard } from "../components/productCard/ProductCard";
 
 import "../../App.css";
+import { useSearchParams } from "react-router-dom";
 
 export const Products = () => {
   const { allProducts, isProductsLoading, getData } = useContext(DataContext);
   const { appliedFilters } = useContext(FilterContext);
+  const [showFilters, setShowFilters] = useState(false);
 
   const filteredProducts = getFilteredProducts(allProducts, appliedFilters);
 
@@ -21,8 +25,19 @@ export const Products = () => {
   return (
     <>
       <div className="products-main">
-        <div className="product-filters">
+        <div
+          className={
+            showFilters
+              ? "product-filters show-product-filters"
+              : "product-filters "
+          }
+        >
           <Filter />
+
+          <AiOutlineClose
+            className="filter-close-icon"
+            onClick={() => setShowFilters(false)}
+          />
         </div>
         {isProductsLoading ? (
           <div className="loader">
@@ -31,7 +46,10 @@ export const Products = () => {
         ) : (
           <div className="products-list-container">
             <div className="product-list-header">
-              <button className="show-filters-button">Filters</button>
+              <BsFilterSquare
+                className="show-filters-button"
+                onClick={() => setShowFilters(!showFilters)}
+              />
               <p>Showing all Products({allProducts.length})</p>
             </div>
             <div className="products-list">

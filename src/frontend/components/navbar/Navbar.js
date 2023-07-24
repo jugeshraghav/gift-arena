@@ -55,22 +55,28 @@ export const Navbar = () => {
             <NavLink to="/products" style={getStyle}>
               <MdOutlineExplore className="nav-link" />
             </NavLink>
-            <NavLink to="/wishlist" style={getStyle}>
-              <div className="link-container">
-                <AiOutlineHeart className="nav-link" />
-                {wishlist?.length > 0 && (
-                  <p className="nav-link-count">{wishlist?.length}</p>
-                )}
-              </div>
-            </NavLink>
-            <NavLink to="/cart" style={getStyle}>
-              <div className="link-container">
-                <AiOutlineShoppingCart className="nav-link" />
-                {cart?.length > 0 && (
-                  <p className="nav-link-count">{cart?.length}</p>
-                )}
-              </div>
-            </NavLink>
+            {token && (
+              <NavLink to="/wishlist" style={getStyle}>
+                <div className="link-container">
+                  <AiOutlineHeart className="nav-link" />
+                  {wishlist?.length > 0 && (
+                    <p className="nav-link-count">{wishlist?.length}</p>
+                  )}
+                </div>
+              </NavLink>
+            )}
+
+            {token && (
+              <NavLink to="/cart" style={getStyle}>
+                <div className="link-container">
+                  <AiOutlineShoppingCart className="nav-link" />
+                  {cart?.length > 0 && (
+                    <p className="nav-link-count">{cart?.length}</p>
+                  )}
+                </div>
+              </NavLink>
+            )}
+
             <NavLink to={token ? "/profile" : "login"} style={getStyle}>
               <AiOutlineUser className="nav-link" />
             </NavLink>

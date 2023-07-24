@@ -52,7 +52,6 @@ export const DataProvider = ({ children }) => {
   const getCartItems = async () => {
     setIsCartLoading(true);
     try {
-      console.log("hello from get cart items");
       const response = await fetch("/api/user/cart", {
         headers: {
           authorization: encodedToken,

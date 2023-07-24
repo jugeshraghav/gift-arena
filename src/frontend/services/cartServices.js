@@ -7,7 +7,6 @@ export const addToCartHandler = async (
   navigate,
   location
 ) => {
-  console.log(product._id);
   if (encodedToken) {
     try {
       const response = await fetch(" /api/user/cart", {
@@ -19,7 +18,6 @@ export const addToCartHandler = async (
       });
 
       const cartObj = await response.json();
-      console.log(cartObj?.cart);
       dispatch({ type: "add_to_cart", payLoad: cartObj?.cart });
       toast.success("Item added to Cart");
     } catch (e) {

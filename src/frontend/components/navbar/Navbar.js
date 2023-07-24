@@ -10,8 +10,10 @@ import { MdOutlineExplore } from "react-icons/md";
 
 import { FilterContext } from "../../contexts/filterContext";
 import "./navbar.css";
+import { DataContext } from "../../contexts/dataContext";
 export const Navbar = () => {
   const { filterDispatch } = useContext(FilterContext);
+  const { wishlist, cart } = useContext(DataContext);
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
   const searchProductHandler = (searchText) => {
@@ -54,10 +56,20 @@ export const Navbar = () => {
               <MdOutlineExplore className="nav-link" />
             </NavLink>
             <NavLink to="/wishlist" style={getStyle}>
-              <AiOutlineHeart className="nav-link" />
+              <div className="link-container">
+                <AiOutlineHeart className="nav-link" />
+                {wishlist?.length > 0 && (
+                  <p className="nav-link-count">{wishlist?.length}</p>
+                )}
+              </div>
             </NavLink>
             <NavLink to="/cart" style={getStyle}>
-              <AiOutlineShoppingCart className="nav-link" />
+              <div className="link-container">
+                <AiOutlineShoppingCart className="nav-link" />
+                {cart?.length > 0 && (
+                  <p className="nav-link-count">{cart?.length}</p>
+                )}
+              </div>
             </NavLink>
             <NavLink to={token ? "/profile" : "login"} style={getStyle}>
               <AiOutlineUser className="nav-link" />

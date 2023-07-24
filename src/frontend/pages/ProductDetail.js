@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { useLocation, useNavigate, useParams } from "react-router";
+import { DataContext } from "../contexts/dataContext";
 import { addToCartHandler } from "../services/cartServices";
 import {
   removeFromWishlistHandler,
   addToWishlistHandler,
 } from "../services/wishlistServices";
-import { DataContext } from "../contexts/dataContext";
 import { isInCart, isInWishlist } from "../utils/productFunctions";
-import { NavLink } from "react-router-dom";
 
 export const ProductDetail = () => {
   const { product_id } = useParams();
@@ -15,6 +15,7 @@ export const ProductDetail = () => {
   const { addDataDispatch, wishlist, cart } = useContext(DataContext);
 
   const {
+    description,
     altText,
     bestseller,
     category,
@@ -48,27 +49,32 @@ export const ProductDetail = () => {
             <img src={imageUrl} alt={altText} />
           </div>
           <div className="product-detail-card-content-container">
-            <h3>{name}</h3>
+            <h3 className="product-detail-card-bold-cursive-text">{name}</h3>
             <div>
-              <h4>Category:</h4>
-              <p>{category}</p>
+              <h4 className="product-detail-card-bold-cursive-text">
+                Category:
+              </h4>
+              <p className="product-detail-card-small-text">{category}</p>
+            </div>
+            <div>
+              <p className="product-detail-card-small-text">{description}</p>
             </div>
             <div>
               {" "}
-              <h4>Price:</h4>
-              <p>{price}</p>
+              <h4 className="product-detail-card-bold-cursive-text"> Price:</h4>
+              <p className="product-detail-card-small-text">Rs {price}</p>
             </div>
             <div>
               {isProductInWishlist ? (
                 <button
-                  className="product-detail-button"
+                  className="product-detail-button   fill-color-button"
                   onClick={() => removeFromWishlistHandler(id, addDataDispatch)}
                 >
                   Remove from Wishlist
                 </button>
               ) : (
                 <button
-                  className="product-detail-button"
+                  className="product-detail-button primary-button"
                   onClick={() =>
                     addToWishlistHandler(
                       product,
@@ -82,12 +88,15 @@ export const ProductDetail = () => {
                 </button>
               )}
               {isProductInCart ? (
-                <NavLink to="/cart">
-                  <button className="product-detail-button">Go to Cart</button>
-                </NavLink>
+                <button
+                  className="product-detail-button fill-color-button"
+                  onClick={() => navigate("/cart")}
+                >
+                  Go to Cart
+                </button>
               ) : (
                 <button
-                  className="product-detail-button"
+                  className="product-detail-button primary-button"
                   onClick={() =>
                     addToCartHandler(
                       product,

@@ -1,14 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import ClipLoader from "react-spinners/ClipLoader";
 import { DataContext } from "../contexts/dataContext";
 import { ProductCard } from "../components/productCard/ProductCard";
 import "../../App.css";
+import {
+  addToWishlistHandler,
+  removeFromWishlistHandler,
+} from "../services/wishlistServices";
 
 export const Whishlist = () => {
-  const { wishlist, isWishlistLoading } = useContext(DataContext);
+  const { wishlist, getWishlistItems, isWishlistLoading } =
+    useContext(DataContext);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getWishlistItems();
+  }, [addToWishlistHandler, removeFromWishlistHandler]);
   return (
     <>
       {isWishlistLoading ? (
@@ -30,7 +39,7 @@ export const Whishlist = () => {
               </button>
             </div>
           ) : (
-            <div className="products-list">
+            <div className="wishlist-list">
               {wishlist.map((product) => (
                 <ProductCard cardDetails={product} key={product?._id} />
               ))}

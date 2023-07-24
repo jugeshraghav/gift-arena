@@ -21,8 +21,6 @@ export const ProductCard = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(isProductInCart);
-
   return (
     <>
       <div className="product-card">
@@ -49,15 +47,15 @@ export const ProductCard = (props) => {
           </div>
           <p className="product-card-price">Rs {price}</p>
           {isProductInCart ? (
-            <button className="secondary-button product-card-btn">
-              {" "}
-              <NavLink
-                to="/cart"
-                style={{ color: "white", textDecoration: "none" }}
-              >
+            <NavLink
+              to="/cart"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              <button className="secondary-button product-card-btn">
+                {" "}
                 Go to Cart{" "}
-              </NavLink>
-            </button>
+              </button>
+            </NavLink>
           ) : (
             <button
               className="primary-button product-card-btn"

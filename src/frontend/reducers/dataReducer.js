@@ -80,6 +80,7 @@ export const dataReducer = (state, action) => {
       return {
         ...state,
         cart: [],
+        selectedAddress: {},
         orderList: [...state.orderList, ...payLoad],
       };
 

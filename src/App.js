@@ -17,7 +17,16 @@ import { OrderSuccessfull } from "./frontend/pages/OrderSuccessfull";
 function App() {
   return (
     <div className="App">
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        reverseOrder={false}
+        containerStyle={{ top: "10%" }}
+        toastOptions={{ style: { maxWidth: 500 } }}
+        theme="colored"
+        autoClose={1000}
+        closeOnClick={true}
+        pauseOnHover={false}
+      />
       <Routes>
         <Route element={<Root />}>
           <Route path="/" element={<Home />} />

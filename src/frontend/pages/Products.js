@@ -50,7 +50,7 @@ export const Products = () => {
                 className="show-filters-button"
                 onClick={() => setShowFilters(!showFilters)}
               />
-              <p>Showing all Products({allProducts.length})</p>
+              <p>Showing all Products({filteredProducts.length})</p>
             </div>
             <div className="products-list">
               {filteredProducts.map((product) => (

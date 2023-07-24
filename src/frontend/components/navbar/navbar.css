@@ -25,6 +25,7 @@
 .nav-logo {
   color: var(--primary-color);
 }
+
 .nav-logo-img {
   font-size: 35px;
   color: var(--primary-color);
@@ -58,9 +59,25 @@
   font-size: 25px;
 }
 .nav-link {
+  border-radius: 100%;
   color: var(--primary-color);
 }
-
+.nav-link:hover {
+  box-shadow: 0 0 3px 3px var(--shadow-color);
+}
+.link-container {
+  position: relative;
+}
+.nav-link-count {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  padding: 0.3rem 0.5rem;
+  font-size: 12px;
+  border-radius: 100%;
+  position: absolute;
+  top: -0.5rem;
+  right: -1rem;
+}
 /************Responsive Screens************/
 @media (max-width: 768px) {
   .nav-primary {

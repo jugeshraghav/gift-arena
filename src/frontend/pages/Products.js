@@ -10,7 +10,6 @@ import { Filter } from "../components/filter/Filter";
 import { ProductCard } from "../components/productCard/ProductCard";
 
 import "../../App.css";
-import { useSearchParams } from "react-router-dom";
 
 export const Products = () => {
   const { allProducts, isProductsLoading, getData } = useContext(DataContext);
@@ -21,6 +20,7 @@ export const Products = () => {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>

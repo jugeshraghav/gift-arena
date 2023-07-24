@@ -9,6 +9,7 @@
   width: 100%;
   height: 100%;
   z-index: 20;
+  padding: 0.5rem;
 }
 .address-modal-main {
   height: max-content;

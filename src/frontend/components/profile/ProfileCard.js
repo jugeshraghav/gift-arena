@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../contexts/authenticationContext";
 
 import { AddressCard } from "../addressCard/AddressCard";

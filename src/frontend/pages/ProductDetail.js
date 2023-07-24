@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { DataContext } from "../contexts/dataContext";
 import { addToCartHandler } from "../services/cartServices";
@@ -14,18 +13,7 @@ export const ProductDetail = () => {
   const [product, setProduct] = useState([]);
   const { addDataDispatch, wishlist, cart } = useContext(DataContext);
 
-  const {
-    description,
-    altText,
-    bestseller,
-    category,
-    id,
-    imageUrl,
-    name,
-    price,
-    rating,
-    subCategory,
-  } = product;
+  const { description, altText, category, id, imageUrl, name, price } = product;
 
   const isProductInCart = isInCart(cart, id);
   const isProductInWishlist = isInWishlist(wishlist, id);

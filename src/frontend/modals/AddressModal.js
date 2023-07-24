@@ -56,6 +56,7 @@ export const AddressModal = ({ show, onClose }) => {
     } else {
       setCurrentAddress(initial_address_details);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show]);
   const dummyAddressHandler = () => {
     setCurrentAddress({

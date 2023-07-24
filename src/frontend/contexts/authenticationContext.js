@@ -1,6 +1,5 @@
-import { createContext, useReducer } from "react";
+import { createContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { dataReducer, initial_state } from "../reducers/dataReducer";
 import { toast } from "react-toastify";
 import { loginService, signUpService } from "../services/authServices";
 

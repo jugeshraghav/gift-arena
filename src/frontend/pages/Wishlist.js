@@ -15,8 +15,11 @@ export const Whishlist = () => {
 
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
-    getWishlistItems();
+    token && getWishlistItems();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addToWishlistHandler, removeFromWishlistHandler]);
   return (
     <>

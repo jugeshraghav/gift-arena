@@ -15,8 +15,11 @@ export const Cart = () => {
   const { cart, getCartItems, isCartLoading } = useContext(DataContext);
 
   const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
   useEffect(() => {
-    getCartItems();
+    token && getCartItems();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addToCartHandler, removeFromCartHandler, quantityHandler]);
   return (
     <>

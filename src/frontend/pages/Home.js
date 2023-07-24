@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { DataContext } from "../contexts/dataContext";
 import { FilterContext } from "../contexts/filterContext";
@@ -53,7 +53,7 @@ export const Home = () => {
                 key={_id}
                 onClick={() => categoryHandler(categoryName)}
               >
-                <img src={image}></img>
+                <img src={image} alt="category"></img>
 
                 <p>{categoryName}</p>
               </div>

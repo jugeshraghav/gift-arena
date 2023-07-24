@@ -535,7 +535,8 @@ video {
   }
 }
 @media (max-width: 480px) {
-  .cart-container {
+  .cart-container,
+  .wishlist-container {
     padding: 2rem 0rem;
   }
 }

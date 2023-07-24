@@ -1,9 +1,10 @@
+//external imports
 import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { DataContext } from "../../contexts/dataContext";
 import { FaStar } from "react-icons/fa";
-import { ToastContainer } from "react-toastify";
-import { isInCart, isInWishlist } from "../../utils/productFunctions";
+//internal imports
+import { DataContext } from "../../contexts/dataContext";
+import { isInWishlist } from "../../utils/productFunctions";
 import {
   quantityHandler,
   removeFromCartHandler,
@@ -12,17 +13,19 @@ import {
   removeFromWishlistHandler,
   addToWishlistHandler,
 } from "../../services/wishlistServices";
+//style imports
 import "./cartCard.css";
+import { AuthContext } from "../../contexts/authenticationContext";
+
 export const CartCard = ({ product }) => {
   const { _id, name, price, imageUrl, altText, qty, rating, bestseller } =
     product;
 
-  const encodedToken = localStorage.getItem("token");
-  const { cart, wishlist, getWishlistItems, getCartItems, addDataDispatch } =
-    useContext(DataContext);
+  const { wishlist, addDataDispatch } = useContext(DataContext);
+  const { token } = useContext(AuthContext);
 
-  const isProductInCart = isInCart(cart, _id);
   const isProductInWishlist = isInWishlist(wishlist, _id);
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -48,14 +51,18 @@ export const CartCard = ({ product }) => {
           <div className="cart-card-quantity">
             <button
               className="primary-oval-button quantity-btn"
-              onClick={() => quantityHandler(_id, "decrement", addDataDispatch)}
+              onClick={() =>
+                quantityHandler(_id, "decrement", addDataDispatch, token)
+              }
             >
               -
             </button>
             <p>{qty}</p>
             <button
               className="primary-oval-button quantity-btn"
-              onClick={() => quantityHandler(_id, "increment", addDataDispatch)}
+              onClick={() =>
+                quantityHandler(_id, "increment", addDataDispatch, token)
+              }
             >
               +
             </button>
@@ -63,14 +70,16 @@ export const CartCard = ({ product }) => {
           <div className="cart-card-buttons">
             <button
               className=" primary-button cart-card-button"
-              onClick={() => removeFromCartHandler(_id, addDataDispatch)}
+              onClick={() => removeFromCartHandler(_id, addDataDispatch, token)}
             >
               Remove
             </button>
             {isProductInWishlist ? (
               <button
                 className="  primary-button cart-card-button"
-                onClick={() => removeFromWishlistHandler(_id, addDataDispatch)}
+                onClick={() =>
+                  removeFromWishlistHandler(_id, addDataDispatch, token)
+                }
               >
                 Remove from Wishlist
               </button>
@@ -82,7 +91,8 @@ export const CartCard = ({ product }) => {
                     product,
                     addDataDispatch,
                     navigate,
-                    location
+                    location,
+                    token
                   )
                 }
               >

@@ -1,18 +1,24 @@
+//external imports
 import { useContext } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FaHeart, FaStar } from "react-icons/fa";
-import { isInCart, isInWishlist } from "../../utils/productFunctions";
+
+//internal imports
 import { DataContext } from "../../contexts/dataContext";
 import { addToCartHandler } from "../../services/cartServices";
 import {
   removeFromWishlistHandler,
   addToWishlistHandler,
 } from "../../services/wishlistServices";
+import { isInCart, isInWishlist } from "../../utils/productFunctions";
 
+//style imports
 import "./productCard.css";
+import { AuthContext } from "../../contexts/authenticationContext";
 
 export const ProductCard = (props) => {
   const { cart, wishlist, addDataDispatch } = useContext(DataContext);
+  const { token } = useContext(AuthContext);
   const { _id, name, price, imageUrl, altText, rating, bestseller } =
     props.cardDetails;
 
@@ -36,8 +42,8 @@ export const ProductCard = (props) => {
         </div>
 
         <div className="product-card-content">
-          <div className="product-card-title">
-            <p className="product-card-text">{name}</p>
+          <div className="product-card-title-container">
+            <p className="product-card-title">{name}</p>
             <p className="rating-strip">
               <span>{rating}</span>
               <span>
@@ -46,7 +52,7 @@ export const ProductCard = (props) => {
             </p>
           </div>
           <p className="product-card-price">Rs {price}</p>
-          {isProductInCart ? (
+          {isProductInCart && token ? (
             <NavLink
               to="/cart"
               style={{ color: "white", textDecoration: "none" }}
@@ -64,7 +70,8 @@ export const ProductCard = (props) => {
                   props.cardDetails,
                   addDataDispatch,
                   navigate,
-                  location
+                  location,
+                  token
                 )
               }
             >
@@ -73,12 +80,16 @@ export const ProductCard = (props) => {
           )}
         </div>
 
-        {isProductInWishlist ? (
+        {isProductInWishlist && token ? (
           <button
             style={{ color: "red" }}
             className="wishlist-strip"
             onClick={() =>
-              removeFromWishlistHandler(props.cardDetails._id, addDataDispatch)
+              removeFromWishlistHandler(
+                props.cardDetails._id,
+                addDataDispatch,
+                token
+              )
             }
           >
             <FaHeart />
@@ -91,7 +102,8 @@ export const ProductCard = (props) => {
                 props.cardDetails,
                 addDataDispatch,
                 navigate,
-                location
+                location,
+                token
               )
             }
           >

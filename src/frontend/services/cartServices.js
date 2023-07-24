@@ -1,11 +1,11 @@
 import { toast } from "react-toastify";
-const encodedToken = localStorage.getItem("token");
 
 export const addToCartHandler = async (
   product,
   dispatch,
   navigate,
-  location
+  location,
+  encodedToken
 ) => {
   if (encodedToken) {
     try {
@@ -24,10 +24,15 @@ export const addToCartHandler = async (
       console.log(e);
     }
   } else {
+    toast.warning("Please login first");
     navigate("/login", { state: { from: location?.pathname } });
   }
 };
-export const removeFromCartHandler = async (productId, dispatch) => {
+export const removeFromCartHandler = async (
+  productId,
+  dispatch,
+  encodedToken
+) => {
   try {
     const response = await fetch(`/api/user/cart/${productId}`, {
       method: "DELETE",
@@ -43,7 +48,12 @@ export const removeFromCartHandler = async (productId, dispatch) => {
   }
 };
 
-export const quantityHandler = async (productId, type, dispatch) => {
+export const quantityHandler = async (
+  productId,
+  type,
+  dispatch,
+  encodedToken
+) => {
   try {
     const response = await fetch(`/api/user/cart/${productId}`, {
       method: "POST",

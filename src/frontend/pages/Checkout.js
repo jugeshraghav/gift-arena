@@ -6,9 +6,11 @@ import { AddressCard } from "../components/addressCard/AddressCard";
 import "../../App.css";
 import { useNavigate } from "react-router";
 import { removeFromCartHandler } from "../services/cartServices";
+import { AuthContext } from "../contexts/authenticationContext";
 
 export const Checkout = () => {
   const { selectedAddress, cart, addDataDispatch } = useContext(DataContext);
+  const { token } = useContext(AuthContext);
   const itemsInCart = cart.length;
   const discount = 5;
   const totalPrice = cart.reduce((acc, { price, qty }) => acc + price * qty, 0);
@@ -21,7 +23,9 @@ export const Checkout = () => {
         address: selectedAddress,
       }));
       //remove items from cart
-      cart?.forEach(({ _id }) => removeFromCartHandler(_id, addDataDispatch));
+      cart?.forEach(({ _id }) =>
+        removeFromCartHandler(_id, addDataDispatch, token)
+      );
 
       addDataDispatch({ type: "payment", payLoad: myOrders });
       navigate("/order-successfull");

@@ -1,6 +1,4 @@
 export const loginService = async (email, password) => {
-  console.log("hi");
-
   return await fetch("/api/auth/login", {
     method: "POST",
     body: JSON.stringify({

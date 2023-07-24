@@ -33,14 +33,14 @@
   flex-direction: column;
   justify-content: space-around;
 }
-.product-card-title {
+.product-card-title-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0;
   gap: 5px;
 }
-.product-card-text {
+.product-card-title {
   font-family: cursive;
   font-size: 16px;
   font-weight: bold;
@@ -94,3 +94,8 @@
 }
 
 /******************Responsive Screens*****************/
+@media (max-width: 460px) {
+  .product-card-title {
+    font-family: none;
+  }
+}

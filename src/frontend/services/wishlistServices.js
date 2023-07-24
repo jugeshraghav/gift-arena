@@ -1,11 +1,11 @@
 import { toast } from "react-toastify";
-const encodedToken = localStorage.getItem("token");
 
 export const addToWishlistHandler = async (
   product,
   dispatch,
   navigate,
-  location
+  location,
+  encodedToken
 ) => {
   if (encodedToken) {
     try {
@@ -28,7 +28,11 @@ export const addToWishlistHandler = async (
   }
 };
 
-export const removeFromWishlistHandler = async (productId, dispatch) => {
+export const removeFromWishlistHandler = async (
+  productId,
+  dispatch,
+  encodedToken
+) => {
   try {
     console.log(productId);
     const response = await fetch(`/api/user/wishlist/${productId}`, {

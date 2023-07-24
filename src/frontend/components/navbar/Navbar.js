@@ -1,3 +1,4 @@
+//external imports
 import { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ImGift } from "react-icons/im";
@@ -8,14 +9,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { MdOutlineExplore } from "react-icons/md";
 
-import { FilterContext } from "../../contexts/filterContext";
-import "./navbar.css";
+//internal imports
 import { DataContext } from "../../contexts/dataContext";
+import { AuthContext } from "../../contexts/authenticationContext";
+import { FilterContext } from "../../contexts/filterContext";
+
+//Style imports
+import "./navbar.css";
+
 export const Navbar = () => {
   const { filterDispatch } = useContext(FilterContext);
   const { wishlist, cart } = useContext(DataContext);
+  const { token } = useContext(AuthContext);
+
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
+
   const searchProductHandler = (searchText) => {
     filterDispatch({ type: "filter_by_search", payLoad: searchText });
     navigate("/products");
@@ -25,8 +34,6 @@ export const Navbar = () => {
       textDecoration: "none",
     };
   };
-
-  const token = localStorage.getItem("token");
 
   return (
     <>

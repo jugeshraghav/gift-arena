@@ -52,11 +52,11 @@
 .nav-links {
   grid-area: links;
 }
-.nav-links,
-.nav-links-secondary-navbar {
+.nav-links {
   display: flex;
   gap: 1.5rem;
   font-size: 25px;
+  justify-content: space-between;
 }
 .nav-link {
   border-radius: 100%;

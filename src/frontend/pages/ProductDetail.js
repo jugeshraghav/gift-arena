@@ -7,11 +7,13 @@ import {
   addToWishlistHandler,
 } from "../services/wishlistServices";
 import { isInCart, isInWishlist } from "../utils/productFunctions";
+import { AuthContext } from "../contexts/authenticationContext";
 
 export const ProductDetail = () => {
   const { product_id } = useParams();
   const [product, setProduct] = useState([]);
   const { addDataDispatch, wishlist, cart } = useContext(DataContext);
+  const { token } = useContext(AuthContext);
 
   const { description, altText, category, id, imageUrl, name, price } = product;
 
@@ -19,6 +21,8 @@ export const ProductDetail = () => {
   const isProductInWishlist = isInWishlist(wishlist, id);
   const navigate = useNavigate();
   const location = useLocation();
+
+  //handlers
   const getProductDetails = async () => {
     try {
       const response = await fetch(`/api/products/${product_id}`);
@@ -45,7 +49,9 @@ export const ProductDetail = () => {
               <p className="product-detail-card-small-text">{category}</p>
             </div>
             <div>
-              <p className="product-detail-card-small-text">{description}</p>
+              <p className="product-detail-card-small-text product-detail-desc">
+                {description}
+              </p>
             </div>
             <div>
               {" "}
@@ -53,10 +59,12 @@ export const ProductDetail = () => {
               <p className="product-detail-card-small-text">Rs {price}</p>
             </div>
             <div>
-              {isProductInWishlist ? (
+              {isProductInWishlist && token ? (
                 <button
                   className="product-detail-button   fill-color-button"
-                  onClick={() => removeFromWishlistHandler(id, addDataDispatch)}
+                  onClick={() =>
+                    removeFromWishlistHandler(id, addDataDispatch, token)
+                  }
                 >
                   Remove from Wishlist
                 </button>
@@ -68,14 +76,15 @@ export const ProductDetail = () => {
                       product,
                       addDataDispatch,
                       navigate,
-                      location
+                      location,
+                      token
                     )
                   }
                 >
                   Add to Wishlist
                 </button>
               )}
-              {isProductInCart ? (
+              {isProductInCart && token ? (
                 <button
                   className="product-detail-button fill-color-button"
                   onClick={() => navigate("/cart")}
@@ -90,7 +99,8 @@ export const ProductDetail = () => {
                       product,
                       addDataDispatch,
                       navigate,
-                      location
+                      location,
+                      token
                     )
                   }
                 >

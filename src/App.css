@@ -340,6 +340,9 @@ video {
 .product-detail-card-small-text {
   font-size: 14px;
 }
+.product-detail-desc {
+  color: grey;
+}
 .product-detail-button {
   width: 100%;
   font-weight: normal;
@@ -504,6 +507,10 @@ video {
     width: 90%;
     height: 70%;
   }
+  .product-detail-card-bold-cursive-text {
+    font-family: none;
+    font-weight: bold;
+  }
 }
 
 @media (max-width: 585px) {
@@ -532,6 +539,9 @@ video {
   .product-detail-card-content-container {
     padding: 0 1rem 1rem 1rem;
     width: 100%;
+  }
+  .product-detail-desc {
+    font-size: 12px;
   }
 }
 @media (max-width: 480px) {

@@ -5,6 +5,7 @@ import { DataContext } from "../contexts/dataContext";
 import { AddressCard } from "../components/addressCard/AddressCard";
 import "../../App.css";
 import { useNavigate } from "react-router";
+import { removeFromCartHandler } from "../services/cartServices";
 
 export const Checkout = () => {
   const { selectedAddress, cart, addDataDispatch } = useContext(DataContext);
@@ -19,6 +20,8 @@ export const Checkout = () => {
         ...product,
         address: selectedAddress,
       }));
+      //remove items from cart
+      cart?.forEach(({ _id }) => removeFromCartHandler(_id, addDataDispatch));
 
       addDataDispatch({ type: "payment", payLoad: myOrders });
       navigate("/order-successfull");

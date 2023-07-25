@@ -1,7 +1,9 @@
-## Gift Arena
-# 🎁GiftArena: An online e-commerce store where you can find perfect gifts for your loved ones.
+
+## 🎁GiftArena:
+# An online e-commerce store where you can find perfect gifts for your loved ones.
 
 # ⭐Features:
+
 1.Several Pages to be displayed: Home, Explore, Cart, Wishlist etc
 2.User login and Signup
 3.Frontend Authentication: includes some private pages where you can navigate only after signing in
@@ -14,6 +16,7 @@
 11.Fully Responsive
 
 # ⚒️Tools and Technologies used:
+
 1.React hooks and context
 2.mockbee
 3.React toastify
@@ -23,7 +26,8 @@
 7.react router
 
 # Get the source Code:
-``` https://lnkd.in/dKh4rDGn 
+``` https://lnkd.in/dKh4rDGn
 
 # Live Link:
 ```https://lnkd.in/dkcAsB8Z
+

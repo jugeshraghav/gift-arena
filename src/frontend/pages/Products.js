@@ -13,10 +13,14 @@ import "../../App.css";
 
 export const Products = () => {
   const { allProducts, isProductsLoading, getData } = useContext(DataContext);
-  const { appliedFilters } = useContext(FilterContext);
+  const { appliedFilters, filterDispatch } = useContext(FilterContext);
   const [showFilters, setShowFilters] = useState(false);
 
   const filteredProducts = getFilteredProducts(allProducts, appliedFilters);
+
+  const refreshFilterHandler = () => {
+    filterDispatch({ type: "clear_filters" });
+  };
 
   useEffect(() => {
     getData();
@@ -53,13 +57,27 @@ export const Products = () => {
               <p>Showing all Products({filteredProducts.length})</p>
             </div>
             <div className="products-list">
-              {filteredProducts.map((product) => (
-                <ProductCard
-                  cardDetails={product}
-                  from="products"
-                  key={product._id}
-                />
-              ))}
+              {filteredProducts.length > 0 ? (
+                filteredProducts.map((product) => (
+                  <ProductCard
+                    cardDetails={product}
+                    from="products"
+                    key={product._id}
+                  />
+                ))
+              ) : (
+                <div className="no-items-container">
+                  <p className="no-items-text">
+                    No items found according to your search!
+                  </p>
+                  <button
+                    className="primary-button"
+                    onClick={refreshFilterHandler}
+                  >
+                    Refresh
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         )}
